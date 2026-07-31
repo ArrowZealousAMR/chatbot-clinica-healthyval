@@ -47,12 +47,50 @@ wp_enqueue_style(
 );
 
 	wp_enqueue_script(
-		'cbc-chatbot-script',
-		plugin_dir_url( __FILE__ ) . 'public/js/chatbot-clinica.js',
-		array(),
-		'0.1.0',
-		true
-	);
+    'cbc-chatbot-state',
+    plugin_dir_url(__FILE__) . 'public/js/state.js',
+    array(),
+    '0.1.0',
+    true
+);
+
+wp_enqueue_script(
+    'cbc-chatbot-core',
+    plugin_dir_url(__FILE__) . 'public/js/core.js',
+    array('cbc-chatbot-state'),
+    '0.1.0',
+    true
+);
+
+wp_enqueue_script(
+    'cbc-chatbot-translations',
+    plugin_dir_url(__FILE__) . 'public/js/translations.js',
+    array('cbc-chatbot-core'),
+    '0.1.0',
+    true
+);
+
+wp_enqueue_script(
+    'cbc-chatbot-navigation',
+    plugin_dir_url(__FILE__) . 'public/js/navigation.js',
+    array(
+        'cbc-chatbot-core',
+        'cbc-chatbot-state',
+        'cbc-chatbot-translations'
+    ),
+    '0.1.0',
+    true
+);
+
+wp_enqueue_script(
+    'cbc-chatbot-main',
+    plugin_dir_url(__FILE__) . 'public/js/main.js',
+    array(
+        'cbc-chatbot-navigation'
+    ),
+    '0.1.0',
+    true
+);
 }
 
 add_action( 'wp_enqueue_scripts', 'cbc_cargar_archivos_publicos' );

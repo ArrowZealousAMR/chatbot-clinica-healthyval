@@ -13,11 +13,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	data-pantalla="idioma"
 >
 	<p>
-		Hola, soy el asistente virtual de HealthyVal.
+		Benvingut/da a HealthyVal.
 	</p>
 
 	<p>
-		¿En qué idioma quieres continuar?
+		Selecciona el teu idioma / Selecciona tu idioma / Choose your language
 	</p>
 
 	<div class="cbc-chatbot__opciones">
@@ -36,6 +36,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 			data-idioma="es"
 		>
 			Castellano
+		</button>
+
+		<button
+			type="button"
+			class="cbc-chatbot__opcion"
+			data-idioma="en"
+		>
+			English
 		</button>
 
 	</div>

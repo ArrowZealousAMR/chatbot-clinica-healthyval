@@ -1,0 +1,29 @@
+:root {
+	--cbc-color-primary: #176b87;
+	--cbc-color-primary-dark: #12556c;
+	--cbc-color-primary-light: #edf7fa;
+	--cbc-color-text: #1f2933;
+	--cbc-color-background: #ffffff;
+	--cbc-color-surface: #f3f7f9;
+	--cbc-color-border: #b8c4cc;
+	--cbc-color-error: #b42318;
+	--cbc-color-scrollbar: #9bbcc7;
+
+	--cbc-radius-small: 10px;
+	--cbc-radius-large: 16px;
+
+	--cbc-shadow-button: 0 8px 24px rgba(0, 0, 0, 0.2);
+	--cbc-shadow-window: 0 12px 36px rgba(0, 0, 0, 0.24);
+}
+
+.cbc-chatbot,
+.cbc-chatbot *,
+.cbc-chatbot *::before,
+.cbc-chatbot *::after {
+	box-sizing: border-box;
+}
+
+.cbc-chatbot {
+	font-family: Arial, sans-serif;
+	color: var(--cbc-color-text);
+}

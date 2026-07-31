@@ -1,0 +1,112 @@
+.cbc-chatbot {
+	position: fixed;
+	right: 24px;
+	bottom: 24px;
+	z-index: 9999;
+}
+
+.cbc-chatbot__boton {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 60px;
+	height: 60px;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: var(--cbc-color-primary);
+	color: #ffffff;
+	font-size: 28px;
+	cursor: pointer;
+	box-shadow: var(--cbc-shadow-button);
+}
+
+.cbc-chatbot__boton:hover,
+.cbc-chatbot__boton:focus-visible {
+	background: var(--cbc-color-primary-dark);
+}
+
+.cbc-chatbot__ventana {
+	position: absolute;
+	right: 0;
+	bottom: 84px;
+	display: flex;
+	flex-direction: column;
+	width: 360px;
+	max-width: calc(100vw - 32px);
+	max-height: min(620px, calc(100dvh - 180px));
+	overflow: hidden;
+	border-radius: var(--cbc-radius-large);
+	background: var(--cbc-color-background);
+	color: var(--cbc-color-text);
+	box-shadow: var(--cbc-shadow-window);
+}
+
+.cbc-chatbot__cabecera {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-shrink: 0;
+	gap: 16px;
+	padding: 16px 18px;
+	background: var(--cbc-color-primary);
+	color: #ffffff;
+}
+
+.cbc-chatbot__titulo {
+	margin: 0;
+	color: inherit;
+	font-size: 18px;
+	line-height: 1.3;
+}
+
+.cbc-chatbot__cerrar {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: transparent;
+	color: #ffffff;
+	font-size: 28px;
+	line-height: 1;
+	cursor: pointer;
+}
+
+.cbc-chatbot__cerrar:hover,
+.cbc-chatbot__cerrar:focus-visible {
+	background: rgba(255, 255, 255, 0.16);
+}
+
+.cbc-chatbot__contenido {
+	flex: 1;
+	min-height: 0;
+	padding: 20px;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	text-align: center;
+	scrollbar-width: thin;
+	scrollbar-color: var(--cbc-color-scrollbar) transparent;
+}
+
+.cbc-chatbot__contenido p {
+	margin: 0 0 12px;
+	line-height: 1.55;
+	text-align: center;
+}
+
+.cbc-chatbot__contenido p:last-child {
+	margin-bottom: 0;
+}
+
+.cbc-chatbot__contenido::-webkit-scrollbar {
+	width: 7px;
+}
+
+.cbc-chatbot__contenido::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background: var(--cbc-color-scrollbar);
+}

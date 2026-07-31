@@ -19,11 +19,32 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function cbc_cargar_archivos_publicos() {
 	wp_enqueue_style(
-		'cbc-chatbot-estilos',
-		plugin_dir_url( __FILE__ ) . 'public/css/chatbot-clinica.css',
-		array(),
-		'0.1.0'
-	);
+	'cbc-chatbot-base',
+	plugin_dir_url( __FILE__ ) . 'public/css/base.css',
+	array(),
+	'0.1.0'
+);
+
+wp_enqueue_style(
+	'cbc-chatbot-layout',
+	plugin_dir_url( __FILE__ ) . 'public/css/layout.css',
+	array( 'cbc-chatbot-base' ),
+	'0.1.0'
+);
+
+wp_enqueue_style(
+	'cbc-chatbot-components',
+	plugin_dir_url( __FILE__ ) . 'public/css/components.css',
+	array( 'cbc-chatbot-layout' ),
+	'0.1.0'
+);
+
+wp_enqueue_style(
+	'cbc-chatbot-responsive',
+	plugin_dir_url( __FILE__ ) . 'public/css/responsive.css',
+	array( 'cbc-chatbot-components' ),
+	'0.1.0'
+);
 
 	wp_enqueue_script(
 		'cbc-chatbot-script',

@@ -1,0 +1,41 @@
+.admin-bar .cbc-chatbot__ventana {
+	max-height: min(620px, calc(100dvh - 220px));
+}
+
+@media (max-width: 480px) {
+	.cbc-chatbot {
+		right: 16px;
+		bottom: 16px;
+	}
+
+	.cbc-chatbot__ventana {
+		position: fixed;
+		top: 48px;
+		right: 16px;
+		bottom: 88px;
+		left: 16px;
+		width: auto;
+		max-width: none;
+		max-height: none;
+	}
+
+	.admin-bar .cbc-chatbot__ventana {
+		top: 64px;
+		max-height: none;
+	}
+
+	.cbc-chatbot__contenido {
+		padding: 18px;
+	}
+}
+
+@media (max-width: 360px) {
+	.cbc-chatbot__ventana {
+		right: 10px;
+		left: 10px;
+	}
+
+	.cbc-chatbot__contenido {
+		padding: 16px;
+	}
+}

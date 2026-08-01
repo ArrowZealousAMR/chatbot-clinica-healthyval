@@ -364,5 +364,140 @@ window.CBCChatbot.translations = {
 		}
 
 		return 'Escribe un nombre de al menos 2 caracteres.';
+	},
+    
+	traducirPantallasBasicas: function () {
+		const idioma = window.CBCChatbot.state.idiomaActual;
+
+		document
+			.querySelectorAll('.cbc-chatbot__pantalla')
+			.forEach(function (pantalla) {
+				const subtitulo = pantalla.querySelector(
+					'.cbc-chatbot__subtitulo'
+				);
+				const texto = pantalla.querySelector('p');
+				const volver = pantalla.querySelector(
+					'.cbc-chatbot__volver'
+				);
+
+				if (!subtitulo || !texto || !volver) {
+					return;
+				}
+
+				const nombre = pantalla.dataset.pantalla;
+
+				switch (nombre) {
+					case 'medicina-estetica':
+						if (idioma === 'va') {
+							subtitulo.textContent =
+								'Medicina estètica';
+							texto.textContent =
+								'Aquesta secció estarà disponible pròximament.';
+							volver.textContent = '← Enrere';
+						} else if (idioma === 'en') {
+							subtitulo.textContent =
+								'Aesthetic medicine';
+							texto.textContent =
+								'This section will be available soon.';
+							volver.textContent = '← Back';
+						} else {
+							subtitulo.textContent =
+								'Medicina estética';
+							texto.textContent =
+								'Esta sección estará disponible próximamente.';
+							volver.textContent = '← Volver';
+						}
+
+						break;
+
+					case 'recuperacion':
+						if (idioma === 'va') {
+							subtitulo.textContent =
+								'Recuperació i moviment';
+							texto.textContent =
+								'Aquesta secció estarà disponible pròximament.';
+							volver.textContent = '← Enrere';
+						} else if (idioma === 'en') {
+							subtitulo.textContent =
+								'Recovery and movement';
+							texto.textContent =
+								'This section will be available soon.';
+							volver.textContent = '← Back';
+						} else {
+							subtitulo.textContent =
+								'Recuperación y movimiento';
+							texto.textContent =
+								'Esta sección estará disponible próximamente.';
+							volver.textContent = '← Volver';
+						}
+
+						break;
+
+					case 'salud':
+						if (idioma === 'va') {
+							subtitulo.textContent =
+								'Salut i benestar';
+							texto.textContent =
+								'Aquesta secció estarà disponible pròximament.';
+							volver.textContent = '← Enrere';
+						} else if (idioma === 'en') {
+							subtitulo.textContent =
+								'Health and wellness';
+							texto.textContent =
+								'This section will be available soon.';
+							volver.textContent = '← Back';
+						} else {
+							subtitulo.textContent =
+								'Salud y bienestar';
+							texto.textContent =
+								'Esta sección estará disponible próximamente.';
+							volver.textContent = '← Volver';
+						}
+
+						break;
+
+					case 'precios':
+						if (idioma === 'va') {
+							subtitulo.textContent = 'Preus';
+							texto.textContent =
+								'Aquesta secció estarà disponible pròximament.';
+							volver.textContent = '← Enrere';
+						} else if (idioma === 'en') {
+							subtitulo.textContent = 'Prices';
+							texto.textContent =
+								'This section will be available soon.';
+							volver.textContent = '← Back';
+						} else {
+							subtitulo.textContent = 'Precios';
+							texto.textContent =
+								'Esta sección estará disponible próximamente.';
+							volver.textContent = '← Volver';
+						}
+
+						break;
+
+					case 'cita':
+						if (idioma === 'va') {
+							subtitulo.textContent = 'Demanar cita';
+							texto.textContent =
+								'Aquesta secció estarà disponible pròximament.';
+							volver.textContent = '← Enrere';
+						} else if (idioma === 'en') {
+							subtitulo.textContent =
+								'Book an appointment';
+							texto.textContent =
+								'This section will be available soon.';
+							volver.textContent = '← Back';
+						} else {
+							subtitulo.textContent = 'Pedir cita';
+							texto.textContent =
+								'Esta sección estará disponible próximamente.';
+							volver.textContent = '← Volver';
+						}
+
+						break;
+				}
+			});
 	}
 };
+    

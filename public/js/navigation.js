@@ -4,7 +4,7 @@ window.CBCChatbot.navigation = {
 	elementos: {},
 
 	/**
-	 * Localiza todos los botones, formularios y pantallas
+	 * Localiza los botones, formularios y pantallas
 	 * que participan en la navegación del chatbot.
 	 */
 	inicializarElementos: function () {
@@ -47,6 +47,26 @@ window.CBCChatbot.navigation = {
 
 			pantallaContacto: document.querySelector(
 				'[data-pantalla="contacto"]'
+			),
+
+			pantallaMedicinaEstetica: document.querySelector(
+				'[data-pantalla="medicina-estetica"]'
+			),
+
+			pantallaRecuperacion: document.querySelector(
+				'[data-pantalla="recuperacion"]'
+			),
+
+			pantallaSalud: document.querySelector(
+				'[data-pantalla="salud"]'
+			),
+
+			pantallaPrecios: document.querySelector(
+				'[data-pantalla="precios"]'
+			),
+
+			pantallaCita: document.querySelector(
+				'[data-pantalla="cita"]'
 			)
 		};
 	},
@@ -59,18 +79,27 @@ window.CBCChatbot.navigation = {
 
 		return Boolean(
 			elementos.botonesIdioma.length &&
+			elementos.botonesMenu.length &&
 			elementos.botonEscribirNombre &&
 			elementos.botonSinNombre &&
 			elementos.formularioNombre &&
 			elementos.campoNombre &&
 			elementos.errorNombre &&
-			elementos.pantallaMenu
+			elementos.pantallaMenu &&
+			elementos.pantallaHorarios &&
+			elementos.pantallaUbicacion &&
+			elementos.pantallaContacto &&
+			elementos.pantallaMedicinaEstetica &&
+			elementos.pantallaRecuperacion &&
+			elementos.pantallaSalud &&
+			elementos.pantallaPrecios &&
+			elementos.pantallaCita
 		);
 	},
 
 	/**
 	 * Coloca el foco en el primer botón, enlace o campo
-	 * de una pantalla.
+	 * disponible dentro de una pantalla.
 	 */
 	enfocarPrimerElemento: function (pantalla) {
 		if (!pantalla) {
@@ -78,7 +107,7 @@ window.CBCChatbot.navigation = {
 		}
 
 		const primerElemento = pantalla.querySelector(
-			'button, input, a'
+			'button:not([disabled]), input:not([disabled]), a[href]'
 		);
 
 		if (primerElemento) {
@@ -94,8 +123,25 @@ window.CBCChatbot.navigation = {
 		const translations = window.CBCChatbot.translations;
 
 		translations.traducirMenu();
+		translations.traducirBotonesVolver();
 
 		const pantalla = core.mostrarPantalla('menu');
+
+		this.enfocarPrimerElemento(pantalla);
+	},
+
+	/**
+	 * Traduce y muestra una de las pantallas básicas:
+	 * medicina estética, recuperación, salud, precios o cita.
+	 */
+	mostrarPantallaBasica: function (nombrePantalla) {
+		const core = window.CBCChatbot.core;
+		const translations = window.CBCChatbot.translations;
+
+		translations.traducirPantallasBasicas();
+		translations.traducirBotonesVolver();
+
+		const pantalla = core.mostrarPantalla(nombrePantalla);
 
 		this.enfocarPrimerElemento(pantalla);
 	},
@@ -126,7 +172,8 @@ window.CBCChatbot.navigation = {
 	},
 
 	/**
-	 * Conecta los botones relacionados con el nombre.
+	 * Conecta los botones y el formulario relacionados
+	 * con el nombre del usuario.
 	 */
 	registrarEventosNombre: function () {
 		const elementos = this.elementos;
@@ -139,6 +186,7 @@ window.CBCChatbot.navigation = {
 			'click',
 			function () {
 				translations.traducirFormularioNombre();
+				translations.traducirBotonesVolver();
 
 				elementos.errorNombre.hidden = true;
 				elementos.errorNombre.textContent = '';
@@ -188,7 +236,8 @@ window.CBCChatbot.navigation = {
 	},
 
 	/**
-	 * Conecta todos los botones que permiten volver.
+	 * Conecta todos los botones que permiten volver
+	 * a una pantalla anterior.
 	 */
 	registrarEventosVolver: function () {
 		const elementos = this.elementos;
@@ -201,6 +250,10 @@ window.CBCChatbot.navigation = {
 				const pantallaDestino =
 					botonVolver.dataset.volver;
 
+				if (!pantallaDestino) {
+					return;
+				}
+
 				if (pantallaDestino === 'nombre') {
 					translations.traducirPantallaNombre();
 				}
@@ -208,6 +261,8 @@ window.CBCChatbot.navigation = {
 				if (pantallaDestino === 'menu') {
 					translations.traducirMenu();
 				}
+
+				translations.traducirBotonesVolver();
 
 				const pantalla =
 					core.mostrarPantalla(pantallaDestino);
@@ -225,6 +280,7 @@ window.CBCChatbot.navigation = {
 		const translations = window.CBCChatbot.translations;
 
 		translations.traducirHorarios();
+		translations.traducirBotonesVolver();
 
 		const pantalla = core.mostrarPantalla('horarios');
 
@@ -239,6 +295,7 @@ window.CBCChatbot.navigation = {
 		const translations = window.CBCChatbot.translations;
 
 		translations.traducirUbicacion();
+		translations.traducirBotonesVolver();
 
 		const pantalla = core.mostrarPantalla('ubicacion');
 
@@ -253,6 +310,7 @@ window.CBCChatbot.navigation = {
 		const translations = window.CBCChatbot.translations;
 
 		translations.traducirContacto();
+		translations.traducirBotonesVolver();
 
 		const pantalla = core.mostrarPantalla('contacto');
 
@@ -261,16 +319,21 @@ window.CBCChatbot.navigation = {
 
 	/**
 	 * Abre Doctoralia en una pestaña nueva.
+	 * Esta función se utilizará desde la pantalla de cita.
 	 */
 	abrirDoctoralia: function () {
 		const urlDoctoralia =
 			'https://www.doctoralia.es/clinicas/healthyval';
 
-		window.open(
+		const nuevaVentana = window.open(
 			urlDoctoralia,
 			'_blank',
 			'noopener,noreferrer'
 		);
+
+		if (nuevaVentana) {
+			nuevaVentana.opener = null;
+		}
 	},
 
 	/**
@@ -284,38 +347,55 @@ window.CBCChatbot.navigation = {
 			botonMenu.addEventListener('click', function () {
 				const opcionElegida = botonMenu.dataset.menu;
 
-				if (opcionElegida === 'horarios') {
-					navigation.mostrarHorarios();
-					return;
-				}
+				switch (opcionElegida) {
+					case 'horarios':
+						navigation.mostrarHorarios();
+						break;
 
-				if (opcionElegida === 'ubicacion') {
-					navigation.mostrarUbicacion();
-					return;
-				}
+					case 'ubicacion':
+						navigation.mostrarUbicacion();
+						break;
 
-				if (opcionElegida === 'contacto') {
-					navigation.mostrarContacto();
-					return;
-				}
+					case 'contacto':
+						navigation.mostrarContacto();
+						break;
 
-				if (opcionElegida === 'cita') {
-					navigation.abrirDoctoralia();
-					return;
-				}
+					case 'medicina-estetica':
+						navigation.mostrarPantallaBasica(
+							'medicina-estetica'
+						);
+						break;
 
-				/**
-				 * Estas opciones se conectarán después:
-				 *
-				 * medicina-estetica
-				 * recuperacion-movimiento
-				 * salud-bienestar
-				 * precios
-				 */
-				console.log(
-					'Opción pendiente de conectar:',
-					opcionElegida
-				);
+					case 'recuperacion-movimiento':
+						navigation.mostrarPantallaBasica(
+							'recuperacion'
+						);
+						break;
+
+					case 'salud-bienestar':
+						navigation.mostrarPantallaBasica(
+							'salud'
+						);
+						break;
+
+					case 'precios':
+						navigation.mostrarPantallaBasica(
+							'precios'
+						);
+						break;
+
+					case 'cita':
+						navigation.mostrarPantallaBasica(
+							'cita'
+						);
+						break;
+
+					default:
+						console.warn(
+							'Opción de menú no reconocida:',
+							opcionElegida
+						);
+				}
 			});
 		});
 	},
@@ -328,7 +408,8 @@ window.CBCChatbot.navigation = {
 
 		if (!this.elementosValidos()) {
 			console.error(
-				'No se pudo iniciar la navegación del chatbot.'
+				'No se pudo iniciar la navegación del chatbot. ' +
+					'Falta alguno de los elementos necesarios.'
 			);
 
 			return false;

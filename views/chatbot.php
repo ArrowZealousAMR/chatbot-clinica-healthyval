@@ -53,6 +53,12 @@ $ruta_views = plugin_dir_path( dirname( __FILE__ ) ) . 'views/';
 			<?php require $ruta_views . 'pantalla-ubicacion.php'; ?>
 			<?php require $ruta_views . 'pantalla-contacto.php'; ?>
 
+			<?php require $ruta_views . 'pantalla-medicina-estetica.php'; ?>
+			<?php require $ruta_views . 'pantalla-recuperacion.php'; ?>
+			<?php require $ruta_views . 'pantalla-salud.php'; ?>
+			<?php require $ruta_views . 'pantalla-precios.php'; ?>
+			<?php require $ruta_views . 'pantalla-cita.php'; ?>
+
 		</div>
 
 	</section>

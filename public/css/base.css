@@ -1,19 +1,43 @@
 :root {
-	--cbc-color-primary: #176b87;
-	--cbc-color-primary-dark: #12556c;
-	--cbc-color-primary-light: #edf7fa;
-	--cbc-color-text: #1f2933;
+	/* Colores corporativos HealthyVal */
+	--cbc-color-primary: #8b5b3b;
+	--cbc-color-primary-dark: #6f452d;
+	--cbc-color-primary-light: #f6eee8;
+
+	/* Textos */
+	--cbc-color-text: #332b26;
+	--cbc-color-text-soft: #6f655e;
+
+	/* Fondos */
 	--cbc-color-background: #ffffff;
-	--cbc-color-surface: #f3f7f9;
-	--cbc-color-border: #b8c4cc;
-	--cbc-color-error: #b42318;
-	--cbc-color-scrollbar: #9bbcc7;
+	--cbc-color-background-warm: #fffdf9;
+	--cbc-color-surface: #f8f3ee;
 
-	--cbc-radius-small: 10px;
-	--cbc-radius-large: 16px;
+	/* Bordes y estados */
+	--cbc-color-border: #ddcfc4;
+	--cbc-color-error: #a63d32;
+	--cbc-color-scrollbar: #b99a84;
 
-	--cbc-shadow-button: 0 8px 24px rgba(0, 0, 0, 0.2);
-	--cbc-shadow-window: 0 12px 36px rgba(0, 0, 0, 0.24);
+	/* Formas */
+	--cbc-radius-small: 14px;
+	--cbc-radius-large: 22px;
+
+	/* Sombras */
+	--cbc-shadow-button:
+		0 4px 12px rgba(80, 49, 29, 0.14),
+		0 14px 34px rgba(80, 49, 29, 0.18);
+
+	--cbc-shadow-window:
+		0 2px 8px rgba(73, 48, 31, 0.04),
+		0 16px 42px rgba(73, 48, 31, 0.1),
+		0 30px 70px rgba(73, 48, 31, 0.08);
+
+	/* Animaciones */
+	--cbc-transition-fast:
+		180ms cubic-bezier(0.22, 1, 0.36, 1);
+
+	--cbc-transition-normal:
+		240ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .cbc-chatbot,
@@ -24,6 +48,47 @@
 }
 
 .cbc-chatbot {
-	font-family: Arial, sans-serif;
 	color: var(--cbc-color-text);
+
+	font-family:
+		-apple-system,
+		BlinkMacSystemFont,
+		"Segoe UI",
+		Roboto,
+		Helvetica,
+		Arial,
+		sans-serif;
+
+	font-size: 16px;
+	line-height: 1.5;
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.cbc-chatbot button,
+.cbc-chatbot input,
+.cbc-chatbot textarea,
+.cbc-chatbot select {
+	font-family: inherit;
+}
+
+.cbc-chatbot button {
+	-webkit-tap-highlight-color: transparent;
+}
+
+.cbc-chatbot [hidden] {
+	display: none !important;
+}
+.cbc-chatbot__texto-oculto {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	clip-path: inset(50%);
+	white-space: nowrap;
+	border: 0;
 }

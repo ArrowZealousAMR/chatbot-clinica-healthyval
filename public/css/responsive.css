@@ -8,15 +8,38 @@
 		bottom: 16px;
 	}
 
+	.cbc-chatbot__boton {
+		width: 56px;
+		height: 56px;
+		font-size: 25px;
+	}
+
 	.cbc-chatbot__ventana {
 		position: fixed;
 		top: 48px;
-		right: 16px;
-		bottom: 88px;
-		left: 16px;
+		right: 14px;
+		bottom: 84px;
+		left: 14px;
+
 		width: auto;
 		max-width: none;
 		max-height: none;
+
+		border-radius: 20px;
+
+		background: rgba(255, 253, 249, 0.94);
+
+		-webkit-backdrop-filter:
+			blur(22px)
+			saturate(120%);
+
+		backdrop-filter:
+			blur(22px)
+			saturate(120%);
+
+		box-shadow:
+			0 8px 26px rgba(73, 48, 31, 0.08),
+			0 24px 60px rgba(73, 48, 31, 0.12);
 	}
 
 	.admin-bar .cbc-chatbot__ventana {
@@ -24,18 +47,109 @@
 		max-height: none;
 	}
 
+	.cbc-chatbot__cabecera {
+		padding: 14px 16px;
+	}
+
+	.cbc-chatbot__titulo {
+		font-size: 17px;
+	}
+
 	.cbc-chatbot__contenido {
-		padding: 18px;
+		padding: 20px 18px;
+	}
+
+	.cbc-chatbot__opciones {
+		gap: 10px;
+		margin-top: 18px;
+	}
+
+	.cbc-chatbot__opcion,
+	.cbc-chatbot__accion-contacto {
+		min-height: 48px;
+		padding: 12px 15px;
+		border-radius: 13px;
+	}
+
+	.cbc-chatbot__acciones-secundarias {
+		margin-top: 20px;
+		padding-top: 18px;
 	}
 }
 
 @media (max-width: 360px) {
+	.cbc-chatbot {
+		right: 12px;
+		bottom: 12px;
+	}
+
 	.cbc-chatbot__ventana {
+		top: 42px;
 		right: 10px;
+		bottom: 78px;
 		left: 10px;
+
+		border-radius: 18px;
+	}
+
+	.admin-bar .cbc-chatbot__ventana {
+		top: 60px;
 	}
 
 	.cbc-chatbot__contenido {
-		padding: 16px;
+		padding: 18px 15px;
+	}
+
+	.cbc-chatbot__cabecera {
+		padding: 13px 14px;
+	}
+
+	.cbc-chatbot__titulo {
+		font-size: 16px;
+	}
+
+	.cbc-chatbot__subtitulo {
+		font-size: 19px;
+	}
+
+	.cbc-chatbot__opcion,
+	.cbc-chatbot__accion-contacto {
+		padding: 11px 13px;
+		font-size: 15px;
+	}
+
+	.cbc-chatbot__volver {
+		margin-top: 16px;
+	}
+}
+
+@media (hover: none) {
+	.cbc-chatbot__opcion:hover,
+	.cbc-chatbot__accion-contacto:hover,
+	.cbc-chatbot__volver:hover,
+	.cbc-chatbot__boton:hover,
+	.cbc-chatbot__cerrar:hover {
+		transform: none;
+	}
+}
+
+@media (prefers-reduced-transparency: reduce) {
+	.cbc-chatbot__ventana,
+	.cbc-chatbot__opcion,
+	.cbc-chatbot__campo-nombre,
+	.cbc-chatbot__informacion,
+	.cbc-chatbot__accion-contacto {
+		-webkit-backdrop-filter: none;
+		backdrop-filter: none;
+	}
+
+	.cbc-chatbot__ventana {
+		background: var(--cbc-color-background-warm);
+	}
+
+	.cbc-chatbot__opcion,
+	.cbc-chatbot__campo-nombre,
+	.cbc-chatbot__accion-contacto {
+		background: var(--cbc-color-background);
 	}
 }

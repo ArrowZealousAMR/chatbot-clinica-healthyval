@@ -5,7 +5,11 @@
 }
 
 .cbc-chatbot__opcion {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	width: 100%;
+	min-height: 46px;
 	padding: 12px 16px;
 	border: 1px solid var(--cbc-color-primary);
 	border-radius: var(--cbc-radius-small);
@@ -13,13 +17,29 @@
 	color: var(--cbc-color-primary);
 	font: inherit;
 	font-weight: 600;
+	line-height: 1.35;
 	text-align: center;
+	text-decoration: none;
 	cursor: pointer;
+	transition:
+		background-color 0.2s ease,
+		border-color 0.2s ease,
+		color 0.2s ease,
+		transform 0.2s ease;
 }
 
 .cbc-chatbot__opcion:hover,
 .cbc-chatbot__opcion:focus-visible {
 	background: var(--cbc-color-primary-light);
+}
+
+.cbc-chatbot__opcion:active {
+	transform: translateY(1px);
+}
+
+.cbc-chatbot__opcion:focus-visible {
+	outline: 3px solid rgba(23, 107, 135, 0.2);
+	outline-offset: 2px;
 }
 
 .cbc-chatbot__opcion--destacada {
@@ -30,6 +50,19 @@
 .cbc-chatbot__opcion--destacada:hover,
 .cbc-chatbot__opcion--destacada:focus-visible {
 	background: var(--cbc-color-primary-dark);
+	color: #ffffff;
+}
+
+.cbc-chatbot__acciones-secundarias {
+	display: grid;
+	gap: 10px;
+	margin-top: 22px;
+	padding-top: 18px;
+	border-top: 1px solid var(--cbc-color-border);
+}
+
+.cbc-chatbot__boton-cita-estetica {
+	margin: 0;
 }
 
 .cbc-chatbot__volver {
@@ -37,6 +70,7 @@
 	margin: 18px auto 0;
 	padding: 8px 12px;
 	border: 0;
+	border-radius: 8px;
 	background: transparent;
 	color: var(--cbc-color-primary);
 	font: inherit;
@@ -47,7 +81,13 @@
 
 .cbc-chatbot__volver:hover,
 .cbc-chatbot__volver:focus-visible {
+	background: var(--cbc-color-primary-light);
 	text-decoration: underline;
+}
+
+.cbc-chatbot__volver:focus-visible {
+	outline: 3px solid rgba(23, 107, 135, 0.2);
+	outline-offset: 2px;
 }
 
 .cbc-chatbot__formulario-nombre {
@@ -124,20 +164,37 @@
 	justify-content: center;
 	gap: 10px;
 	width: 100%;
+	min-height: 46px;
 	padding: 12px 16px;
 	border: 1px solid var(--cbc-color-primary);
 	border-radius: var(--cbc-radius-small);
 	background: var(--cbc-color-background);
 	color: var(--cbc-color-primary);
 	font-weight: 600;
+	line-height: 1.35;
 	text-align: center;
 	text-decoration: none;
+	transition:
+		background-color 0.2s ease,
+		border-color 0.2s ease,
+		color 0.2s ease,
+		transform 0.2s ease;
 }
 
 .cbc-chatbot__accion-contacto:hover,
 .cbc-chatbot__accion-contacto:focus-visible {
 	background: var(--cbc-color-primary-light);
+	color: var(--cbc-color-primary);
 	text-decoration: none;
+}
+
+.cbc-chatbot__accion-contacto:active {
+	transform: translateY(1px);
+}
+
+.cbc-chatbot__accion-contacto:focus-visible {
+	outline: 3px solid rgba(23, 107, 135, 0.2);
+	outline-offset: 2px;
 }
 
 .cbc-chatbot__accion-contacto--whatsapp {
@@ -148,4 +205,5 @@
 .cbc-chatbot__accion-contacto--whatsapp:hover,
 .cbc-chatbot__accion-contacto--whatsapp:focus-visible {
 	background: var(--cbc-color-primary-dark);
+	color: #ffffff;
 }

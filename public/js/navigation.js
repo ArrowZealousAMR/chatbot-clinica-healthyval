@@ -53,6 +53,14 @@ window.CBCChatbot.navigation = {
 				'[data-pantalla="medicina-estetica"]'
 			),
 
+			botonesEstetica: document.querySelectorAll(
+				'[data-estetica]'
+			),
+
+			botonCitaEstetica: document.querySelector(
+				'.cbc-chatbot__boton-cita-estetica'
+			),
+
 			pantallaRecuperacion: document.querySelector(
 				'[data-pantalla="recuperacion"]'
 			),
@@ -90,6 +98,8 @@ window.CBCChatbot.navigation = {
 			elementos.pantallaUbicacion &&
 			elementos.pantallaContacto &&
 			elementos.pantallaMedicinaEstetica &&
+			elementos.botonesEstetica.length &&
+			elementos.botonCitaEstetica &&
 			elementos.pantallaRecuperacion &&
 			elementos.pantallaSalud &&
 			elementos.pantallaPrecios &&
@@ -131,8 +141,25 @@ window.CBCChatbot.navigation = {
 	},
 
 	/**
-	 * Traduce y muestra una de las pantallas básicas:
-	 * medicina estética, recuperación, salud, precios o cita.
+	 * Traduce y muestra Medicina estética.
+	 */
+	mostrarMedicinaEstetica: function () {
+		const core = window.CBCChatbot.core;
+		const translations = window.CBCChatbot.translations;
+
+		translations.traducirMedicinaEstetica();
+		translations.traducirBotonesVolver();
+
+		const pantalla = core.mostrarPantalla(
+			'medicina-estetica'
+		);
+
+		this.enfocarPrimerElemento(pantalla);
+	},
+
+	/**
+	 * Traduce y muestra una pantalla básica:
+	 * recuperación, salud, precios o cita.
 	 */
 	mostrarPantallaBasica: function (nombrePantalla) {
 		const core = window.CBCChatbot.core;
@@ -236,8 +263,7 @@ window.CBCChatbot.navigation = {
 	},
 
 	/**
-	 * Conecta todos los botones que permiten volver
-	 * a una pantalla anterior.
+	 * Conecta todos los botones que permiten volver.
 	 */
 	registrarEventosVolver: function () {
 		const elementos = this.elementos;
@@ -264,8 +290,9 @@ window.CBCChatbot.navigation = {
 
 				translations.traducirBotonesVolver();
 
-				const pantalla =
-					core.mostrarPantalla(pantallaDestino);
+				const pantalla = core.mostrarPantalla(
+					pantallaDestino
+				);
 
 				navigation.enfocarPrimerElemento(pantalla);
 			});
@@ -319,7 +346,6 @@ window.CBCChatbot.navigation = {
 
 	/**
 	 * Abre Doctoralia en una pestaña nueva.
-	 * Esta función se utilizará desde la pantalla de cita.
 	 */
 	abrirDoctoralia: function () {
 		const urlDoctoralia =
@@ -337,6 +363,43 @@ window.CBCChatbot.navigation = {
 	},
 
 	/**
+	 * Conecta el botón de cita de Medicina estética
+	 * con Doctoralia.
+	 */
+	registrarEventoCitaEstetica: function () {
+		const elementos = this.elementos;
+		const navigation = this;
+
+		elementos.botonCitaEstetica.addEventListener(
+			'click',
+			function () {
+				navigation.abrirDoctoralia();
+			}
+		);
+	},
+
+	/**
+	 * Registra temporalmente los botones de las subcategorías
+	 * de Medicina estética.
+	 *
+	 * Más adelante cada opción abrirá su propia pantalla.
+	 */
+	registrarEventosEstetica: function () {
+		const elementos = this.elementos;
+
+		elementos.botonesEstetica.forEach(function (boton) {
+			boton.addEventListener('click', function () {
+				const opcionElegida = boton.dataset.estetica;
+
+				console.log(
+					'Subcategoría estética pendiente:',
+					opcionElegida
+				);
+			});
+		});
+	},
+
+	/**
 	 * Conecta los botones del menú principal.
 	 */
 	registrarEventosMenu: function () {
@@ -345,7 +408,8 @@ window.CBCChatbot.navigation = {
 
 		elementos.botonesMenu.forEach(function (botonMenu) {
 			botonMenu.addEventListener('click', function () {
-				const opcionElegida = botonMenu.dataset.menu;
+				const opcionElegida =
+					botonMenu.dataset.menu;
 
 				switch (opcionElegida) {
 					case 'horarios':
@@ -361,9 +425,7 @@ window.CBCChatbot.navigation = {
 						break;
 
 					case 'medicina-estetica':
-						navigation.mostrarPantallaBasica(
-							'medicina-estetica'
-						);
+						navigation.mostrarMedicinaEstetica();
 						break;
 
 					case 'recuperacion-movimiento':
@@ -419,6 +481,8 @@ window.CBCChatbot.navigation = {
 		this.registrarEventosNombre();
 		this.registrarEventosVolver();
 		this.registrarEventosMenu();
+		this.registrarEventoCitaEstetica();
+		this.registrarEventosEstetica();
 
 		return true;
 	}

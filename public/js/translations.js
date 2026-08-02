@@ -86,6 +86,38 @@ window.CBCChatbot.translations = {
 				'.cbc-chatbot__boton-cita-estetica'
 			),
 
+			tituloRecuperacion: document.querySelector(
+				'.cbc-chatbot__titulo-recuperacion'
+			),
+
+			textoRecuperacion: document.querySelector(
+				'.cbc-chatbot__texto-recuperacion'
+			),
+
+			botonesRecuperacion: document.querySelectorAll(
+				'[data-recuperacion]'
+			),
+
+			botonCitaRecuperacion: document.querySelector(
+				'.cbc-chatbot__boton-cita-recuperacion'
+			),
+
+			tituloSalud: document.querySelector(
+				'.cbc-chatbot__titulo-salud'
+			),
+
+			textoSalud: document.querySelector(
+				'.cbc-chatbot__texto-salud'
+			),
+
+			botonesSalud: document.querySelectorAll(
+				'[data-salud]'
+			),
+
+			botonCitaSalud: document.querySelector(
+				'.cbc-chatbot__boton-cita-salud'
+			),
+
 			botonesVolver: document.querySelectorAll(
 				'[data-volver]'
 			)
@@ -106,26 +138,19 @@ window.CBCChatbot.translations = {
 	},
 
 	/**
-	 * Traduce el título de la cabecera.
+	 * Mantiene el logotipo de la cabecera.
+	 *
+	 * El nombre HealthyVal no se traduce.
 	 */
 	traducirTituloChatbot: function () {
-		const idioma = window.CBCChatbot.state.idiomaActual;
 		const elementos = this.obtenerElementos();
 
 		if (!elementos.tituloChatbot) {
 			return;
 		}
 
-		if (idioma === 'va') {
-			elementos.tituloChatbot.textContent =
-				'Assistent HealthyVal';
-		} else if (idioma === 'en') {
-			elementos.tituloChatbot.textContent =
-				'HealthyVal Assistant';
-		} else {
-			elementos.tituloChatbot.textContent =
-				'Asistente HealthyVal';
-		}
+		elementos.tituloChatbot.innerHTML =
+			'healthyval<sup>®</sup>';
 	},
 
 	/**
@@ -632,6 +657,177 @@ window.CBCChatbot.translations = {
 	},
 
 	/**
+	 * Traduce Recuperación y movimiento.
+	 */
+	traducirRecuperacion: function () {
+		const idioma = window.CBCChatbot.state.idiomaActual;
+		const elementos = this.obtenerElementos();
+
+		if (
+			!elementos.tituloRecuperacion ||
+			!elementos.textoRecuperacion ||
+			!elementos.botonCitaRecuperacion ||
+			!elementos.botonesRecuperacion.length
+		) {
+			return;
+		}
+
+		const textos = {
+			va: {
+				titulo: 'Recuperació i moviment',
+				pregunta: 'En quina àrea podem ajudar-te?',
+				cita: 'Demanar cita',
+				opciones: {
+					fisioterapia: 'Fisioteràpia',
+					traumatologia: 'Traumatologia',
+					'medicina-regenerativa':
+						'Medicina regenerativa',
+					'pilates-terapeutico':
+						'Pilates terapèutic',
+					'entrenamiento-terapeutico':
+						'Entrenament terapèutic'
+				}
+			},
+
+			es: {
+				titulo: 'Recuperación y movimiento',
+				pregunta: '¿En qué área podemos ayudarte?',
+				cita: 'Pedir cita',
+				opciones: {
+					fisioterapia: 'Fisioterapia',
+					traumatologia: 'Traumatología',
+					'medicina-regenerativa':
+						'Medicina regenerativa',
+					'pilates-terapeutico':
+						'Pilates terapéutico',
+					'entrenamiento-terapeutico':
+						'Entrenamiento terapéutico'
+				}
+			},
+
+			en: {
+				titulo: 'Recovery and movement',
+				pregunta: 'Which area can we help you with?',
+				cita: 'Book an appointment',
+				opciones: {
+					fisioterapia: 'Physiotherapy',
+					traumatologia: 'Traumatology',
+					'medicina-regenerativa':
+						'Regenerative medicine',
+					'pilates-terapeutico':
+						'Therapeutic Pilates',
+					'entrenamiento-terapeutico':
+						'Therapeutic training'
+				}
+			}
+		};
+
+		const traduccion = textos[idioma] || textos.es;
+
+		elementos.tituloRecuperacion.textContent =
+			traduccion.titulo;
+
+		elementos.textoRecuperacion.textContent =
+			traduccion.pregunta;
+
+		elementos.botonCitaRecuperacion.textContent =
+			traduccion.cita;
+
+		elementos.botonesRecuperacion.forEach(function (boton) {
+			const clave = boton.dataset.recuperacion;
+
+			if (traduccion.opciones[clave]) {
+				boton.textContent =
+					traduccion.opciones[clave];
+			}
+		});
+	},
+
+	/**
+	 * Traduce Salud y bienestar.
+	 */
+	traducirSalud: function () {
+		const idioma = window.CBCChatbot.state.idiomaActual;
+		const elementos = this.obtenerElementos();
+
+		if (
+			!elementos.tituloSalud ||
+			!elementos.textoSalud ||
+			!elementos.botonCitaSalud ||
+			!elementos.botonesSalud.length
+		) {
+			return;
+		}
+
+		const textos = {
+			va: {
+				titulo: 'Salut i benestar',
+				pregunta: 'En quina àrea podem ajudar-te?',
+				cita: 'Demanar cita',
+				opciones: {
+					podologia: 'Podologia',
+					'perdida-peso': 'Pèrdua de pes',
+					psicologia: 'Psicologia',
+					'valoracion-integral':
+						'Valoració integral',
+					'prevencion-seguimiento':
+						'Prevenció i seguiment'
+				}
+			},
+
+			es: {
+				titulo: 'Salud y bienestar',
+				pregunta: '¿En qué área podemos ayudarte?',
+				cita: 'Pedir cita',
+				opciones: {
+					podologia: 'Podología',
+					'perdida-peso': 'Pérdida de peso',
+					psicologia: 'Psicología',
+					'valoracion-integral':
+						'Valoración integral',
+					'prevencion-seguimiento':
+						'Prevención y seguimiento'
+				}
+			},
+
+			en: {
+				titulo: 'Health and wellness',
+				pregunta: 'Which area can we help you with?',
+				cita: 'Book an appointment',
+				opciones: {
+					podologia: 'Podiatry',
+					'perdida-peso': 'Weight management',
+					psicologia: 'Psychology',
+					'valoracion-integral':
+						'Comprehensive assessment',
+					'prevencion-seguimiento':
+						'Prevention and follow-up'
+				}
+			}
+		};
+
+		const traduccion = textos[idioma] || textos.es;
+
+		elementos.tituloSalud.textContent =
+			traduccion.titulo;
+
+		elementos.textoSalud.textContent =
+			traduccion.pregunta;
+
+		elementos.botonCitaSalud.textContent =
+			traduccion.cita;
+
+		elementos.botonesSalud.forEach(function (boton) {
+			const clave = boton.dataset.salud;
+
+			if (traduccion.opciones[clave]) {
+				boton.textContent =
+					traduccion.opciones[clave];
+			}
+		});
+	},
+
+	/**
 	 * Traduce las pantallas que todavía tienen
 	 * contenido provisional.
 	 */
@@ -639,42 +835,6 @@ window.CBCChatbot.translations = {
 		const idioma = window.CBCChatbot.state.idiomaActual;
 
 		const textos = {
-			recuperacion: {
-				va: {
-					titulo: 'Recuperació i moviment',
-					mensaje:
-						'Aquesta secció estarà disponible pròximament.'
-				},
-				es: {
-					titulo: 'Recuperación y movimiento',
-					mensaje:
-						'Esta sección estará disponible próximamente.'
-				},
-				en: {
-					titulo: 'Recovery and movement',
-					mensaje:
-						'This section will be available soon.'
-				}
-			},
-
-			salud: {
-				va: {
-					titulo: 'Salut i benestar',
-					mensaje:
-						'Aquesta secció estarà disponible pròximament.'
-				},
-				es: {
-					titulo: 'Salud y bienestar',
-					mensaje:
-						'Esta sección estará disponible próximamente.'
-				},
-				en: {
-					titulo: 'Health and wellness',
-					mensaje:
-						'This section will be available soon.'
-				}
-			},
-
 			precios: {
 				va: {
 					titulo: 'Preus',

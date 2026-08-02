@@ -9,9 +9,17 @@ window.CBCChatbot.navigation = {
 	 */
 	inicializarElementos: function () {
 		this.elementos = {
-			botonesIdioma: document.querySelectorAll('[data-idioma]'),
-			botonesVolver: document.querySelectorAll('[data-volver]'),
-			botonesMenu: document.querySelectorAll('[data-menu]'),
+			botonesIdioma: document.querySelectorAll(
+				'[data-idioma]'
+			),
+
+			botonesVolver: document.querySelectorAll(
+				'[data-volver]'
+			),
+
+			botonesMenu: document.querySelectorAll(
+				'[data-menu]'
+			),
 
 			botonEscribirNombre: document.querySelector(
 				'.cbc-chatbot__escribir-nombre'
@@ -41,6 +49,10 @@ window.CBCChatbot.navigation = {
 				'[data-pantalla="horarios"]'
 			),
 
+			botonCitaHorarios: document.querySelector(
+				'.cbc-chatbot__boton-cita-horarios'
+			),
+
 			pantallaUbicacion: document.querySelector(
 				'[data-pantalla="ubicacion"]'
 			),
@@ -65,22 +77,38 @@ window.CBCChatbot.navigation = {
 				'[data-pantalla="recuperacion"]'
 			),
 
+			botonesRecuperacion: document.querySelectorAll(
+				'[data-recuperacion]'
+			),
+
+			botonCitaRecuperacion: document.querySelector(
+				'.cbc-chatbot__boton-cita-recuperacion'
+			),
+
 			pantallaSalud: document.querySelector(
 				'[data-pantalla="salud"]'
+			),
+
+			botonesSalud: document.querySelectorAll(
+				'[data-salud]'
+			),
+
+			botonCitaSalud: document.querySelector(
+				'.cbc-chatbot__boton-cita-salud'
 			),
 
 			pantallaPrecios: document.querySelector(
 				'[data-pantalla="precios"]'
 			),
 
-			pantallaCita: document.querySelector(
-				'[data-pantalla="cita"]'
+			botonValoracionPrecios: document.querySelector(
+				'.cbc-chatbot__boton-valoracion-precios'
 			)
 		};
 	},
 
 	/**
-	 * Comprueba que existen los elementos imprescindibles.
+	 * Comprueba que existen todos los elementos necesarios.
 	 */
 	elementosValidos: function () {
 		const elementos = this.elementos;
@@ -95,20 +123,25 @@ window.CBCChatbot.navigation = {
 			elementos.errorNombre &&
 			elementos.pantallaMenu &&
 			elementos.pantallaHorarios &&
+			elementos.botonCitaHorarios &&
 			elementos.pantallaUbicacion &&
 			elementos.pantallaContacto &&
 			elementos.pantallaMedicinaEstetica &&
 			elementos.botonesEstetica.length &&
 			elementos.botonCitaEstetica &&
 			elementos.pantallaRecuperacion &&
+			elementos.botonesRecuperacion.length &&
+			elementos.botonCitaRecuperacion &&
 			elementos.pantallaSalud &&
+			elementos.botonesSalud.length &&
+			elementos.botonCitaSalud &&
 			elementos.pantallaPrecios &&
-			elementos.pantallaCita
+			elementos.botonValoracionPrecios
 		);
 	},
 
 	/**
-	 * Coloca el foco en el primer botón, enlace o campo
+	 * Coloca el foco en el primer elemento interactivo
 	 * disponible dentro de una pantalla.
 	 */
 	enfocarPrimerElemento: function (pantalla) {
@@ -158,17 +191,48 @@ window.CBCChatbot.navigation = {
 	},
 
 	/**
-	 * Traduce y muestra una pantalla básica:
-	 * recuperación, salud, precios o cita.
+	 * Traduce y muestra Recuperación y movimiento.
 	 */
-	mostrarPantallaBasica: function (nombrePantalla) {
+	mostrarRecuperacion: function () {
 		const core = window.CBCChatbot.core;
 		const translations = window.CBCChatbot.translations;
 
-		translations.traducirPantallasBasicas();
+		translations.traducirRecuperacion();
 		translations.traducirBotonesVolver();
 
-		const pantalla = core.mostrarPantalla(nombrePantalla);
+		const pantalla = core.mostrarPantalla(
+			'recuperacion'
+		);
+
+		this.enfocarPrimerElemento(pantalla);
+	},
+
+	/**
+	 * Traduce y muestra Salud y bienestar.
+	 */
+	mostrarSalud: function () {
+		const core = window.CBCChatbot.core;
+		const translations = window.CBCChatbot.translations;
+
+		translations.traducirSalud();
+		translations.traducirBotonesVolver();
+
+		const pantalla = core.mostrarPantalla('salud');
+
+		this.enfocarPrimerElemento(pantalla);
+	},
+
+	/**
+	 * Traduce y muestra la pantalla de precios.
+	 */
+	mostrarPrecios: function () {
+		const core = window.CBCChatbot.core;
+		const translations = window.CBCChatbot.translations;
+
+		translations.traducirPrecios();
+		translations.traducirBotonesVolver();
+
+		const pantalla = core.mostrarPantalla('precios');
 
 		this.enfocarPrimerElemento(pantalla);
 	},
@@ -185,13 +249,16 @@ window.CBCChatbot.navigation = {
 
 		elementos.botonesIdioma.forEach(function (botonIdioma) {
 			botonIdioma.addEventListener('click', function () {
-				state.idiomaActual = botonIdioma.dataset.idioma;
+				state.idiomaActual =
+					botonIdioma.dataset.idioma;
 
 				translations.traducirTituloChatbot();
 				translations.traducirBotonesVolver();
 				translations.traducirPantallaNombre();
 
-				const pantalla = core.mostrarPantalla('nombre');
+				const pantalla = core.mostrarPantalla(
+					'nombre'
+				);
 
 				navigation.enfocarPrimerElemento(pantalla);
 			});
@@ -280,12 +347,30 @@ window.CBCChatbot.navigation = {
 					return;
 				}
 
-				if (pantallaDestino === 'nombre') {
-					translations.traducirPantallaNombre();
-				}
+				switch (pantallaDestino) {
+					case 'nombre':
+						translations.traducirPantallaNombre();
+						break;
 
-				if (pantallaDestino === 'menu') {
-					translations.traducirMenu();
+					case 'menu':
+						translations.traducirMenu();
+						break;
+
+					case 'medicina-estetica':
+						translations.traducirMedicinaEstetica();
+						break;
+
+					case 'recuperacion':
+						translations.traducirRecuperacion();
+						break;
+
+					case 'salud':
+						translations.traducirSalud();
+						break;
+
+					case 'precios':
+						translations.traducirPrecios();
+						break;
 				}
 
 				translations.traducirBotonesVolver();
@@ -300,7 +385,7 @@ window.CBCChatbot.navigation = {
 	},
 
 	/**
-	 * Abre la pantalla de horarios.
+	 * Traduce y abre la pantalla de horarios.
 	 */
 	mostrarHorarios: function () {
 		const core = window.CBCChatbot.core;
@@ -315,7 +400,7 @@ window.CBCChatbot.navigation = {
 	},
 
 	/**
-	 * Abre la pantalla de ubicación.
+	 * Traduce y abre la pantalla de ubicación.
 	 */
 	mostrarUbicacion: function () {
 		const core = window.CBCChatbot.core;
@@ -330,7 +415,7 @@ window.CBCChatbot.navigation = {
 	},
 
 	/**
-	 * Abre la pantalla de contacto.
+	 * Traduce y abre la pantalla de contacto.
 	 */
 	mostrarContacto: function () {
 		const core = window.CBCChatbot.core;
@@ -353,8 +438,7 @@ window.CBCChatbot.navigation = {
 
 		const nuevaVentana = window.open(
 			urlDoctoralia,
-			'_blank',
-			'noopener,noreferrer'
+			'_blank'
 		);
 
 		if (nuevaVentana) {
@@ -363,36 +447,90 @@ window.CBCChatbot.navigation = {
 	},
 
 	/**
-	 * Conecta el botón de cita de Medicina estética
-	 * con Doctoralia.
+	 * Conecta todos los botones destacados de cita
+	 * y valoración con Doctoralia.
 	 */
-	registrarEventoCitaEstetica: function () {
+	registrarEventosCita: function () {
 		const elementos = this.elementos;
 		const navigation = this;
 
-		elementos.botonCitaEstetica.addEventListener(
-			'click',
-			function () {
-				navigation.abrirDoctoralia();
-			}
-		);
+		const botonesCita = [
+			elementos.botonCitaEstetica,
+			elementos.botonCitaRecuperacion,
+			elementos.botonCitaSalud,
+			elementos.botonCitaHorarios,
+			elementos.botonValoracionPrecios
+		];
+
+		botonesCita.forEach(function (botonCita) {
+			botonCita.addEventListener(
+				'click',
+				function () {
+					navigation.abrirDoctoralia();
+				}
+			);
+		});
 	},
 
 	/**
-	 * Registra temporalmente los botones de las subcategorías
+	 * Registra provisionalmente las subcategorías
 	 * de Medicina estética.
-	 *
-	 * Más adelante cada opción abrirá su propia pantalla.
 	 */
 	registrarEventosEstetica: function () {
 		const elementos = this.elementos;
 
 		elementos.botonesEstetica.forEach(function (boton) {
 			boton.addEventListener('click', function () {
-				const opcionElegida = boton.dataset.estetica;
+				const opcionElegida =
+					boton.dataset.estetica;
 
-				console.log(
+				console.info(
 					'Subcategoría estética pendiente:',
+					opcionElegida
+				);
+			});
+		});
+	},
+
+	/**
+	 * Registra provisionalmente las especialidades
+	 * de Recuperación y movimiento.
+	 */
+	registrarEventosRecuperacion: function () {
+		const elementos = this.elementos;
+
+		elementos.botonesRecuperacion.forEach(
+			function (boton) {
+				boton.addEventListener(
+					'click',
+					function () {
+						const opcionElegida =
+							boton.dataset.recuperacion;
+
+						console.info(
+							'Especialidad de recuperación pendiente:',
+							opcionElegida
+						);
+					}
+				);
+			}
+		);
+	},
+
+	/**
+	 * Registra provisionalmente las especialidades
+	 * de Salud y bienestar.
+	 */
+	registrarEventosSalud: function () {
+		const elementos = this.elementos;
+
+		elementos.botonesSalud.forEach(function (boton) {
+			boton.addEventListener('click', function () {
+				const opcionElegida =
+					boton.dataset.salud;
+
+				console.info(
+					'Especialidad de salud pendiente:',
 					opcionElegida
 				);
 			});
@@ -412,6 +550,26 @@ window.CBCChatbot.navigation = {
 					botonMenu.dataset.menu;
 
 				switch (opcionElegida) {
+					case 'medicina-estetica':
+						navigation.mostrarMedicinaEstetica();
+						break;
+
+					case 'recuperacion-movimiento':
+						navigation.mostrarRecuperacion();
+						break;
+
+					case 'salud-bienestar':
+						navigation.mostrarSalud();
+						break;
+
+					case 'precios':
+						navigation.mostrarPrecios();
+						break;
+
+					case 'cita':
+						navigation.abrirDoctoralia();
+						break;
+
 					case 'horarios':
 						navigation.mostrarHorarios();
 						break;
@@ -422,34 +580,6 @@ window.CBCChatbot.navigation = {
 
 					case 'contacto':
 						navigation.mostrarContacto();
-						break;
-
-					case 'medicina-estetica':
-						navigation.mostrarMedicinaEstetica();
-						break;
-
-					case 'recuperacion-movimiento':
-						navigation.mostrarPantallaBasica(
-							'recuperacion'
-						);
-						break;
-
-					case 'salud-bienestar':
-						navigation.mostrarPantallaBasica(
-							'salud'
-						);
-						break;
-
-					case 'precios':
-						navigation.mostrarPantallaBasica(
-							'precios'
-						);
-						break;
-
-					case 'cita':
-						navigation.mostrarPantallaBasica(
-							'cita'
-						);
 						break;
 
 					default:
@@ -481,8 +611,10 @@ window.CBCChatbot.navigation = {
 		this.registrarEventosNombre();
 		this.registrarEventosVolver();
 		this.registrarEventosMenu();
-		this.registrarEventoCitaEstetica();
+		this.registrarEventosCita();
 		this.registrarEventosEstetica();
+		this.registrarEventosRecuperacion();
+		this.registrarEventosSalud();
 
 		return true;
 	}

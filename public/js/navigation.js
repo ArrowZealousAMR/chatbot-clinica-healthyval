@@ -110,8 +110,8 @@ window.CBCChatbot.navigation = {
 	/**
 	 * Comprueba únicamente los elementos imprescindibles.
 	 *
-	 * Los botones secundarios no bloquean la navegación
-	 * completa en caso de que falte alguno temporalmente.
+	 * Los elementos secundarios no bloquean el chatbot
+	 * si falta temporalmente alguno de ellos.
 	 */
 	elementosValidos: function () {
 		const elementos = this.elementos;
@@ -154,14 +154,69 @@ window.CBCChatbot.navigation = {
 	},
 
 	/**
+	 * Comprueba que la función de traducción indicada existe
+	 * antes de ejecutarla.
+	 */
+	ejecutarTraduccion: function (nombreFuncion) {
+		const translations = window.CBCChatbot.translations;
+
+		if (
+			translations &&
+			typeof translations[nombreFuncion] === 'function'
+		) {
+			translations[nombreFuncion]();
+		}
+	},
+
+	/**
+	 * Guarda una categoría y elimina cualquier tratamiento
+	 * previamente seleccionado.
+	 */
+	guardarCategoria: function (categoria) {
+		const state = window.CBCChatbot.state;
+
+		if (!state) {
+			return;
+		}
+
+		if (typeof state.guardarCategoria === 'function') {
+			state.guardarCategoria(categoria);
+		} else {
+			state.categoriaSeleccionada = categoria;
+		}
+
+		if (typeof state.guardarTratamiento === 'function') {
+			state.guardarTratamiento('');
+		} else {
+			state.tratamientoSeleccionado = '';
+		}
+	},
+
+	/**
+	 * Guarda la especialidad o tratamiento seleccionado.
+	 */
+	guardarTratamiento: function (tratamiento) {
+		const state = window.CBCChatbot.state;
+
+		if (!state) {
+			return;
+		}
+
+		if (typeof state.guardarTratamiento === 'function') {
+			state.guardarTratamiento(tratamiento);
+		} else {
+			state.tratamientoSeleccionado = tratamiento;
+		}
+	},
+
+	/**
 	 * Traduce y muestra el menú principal.
 	 */
 	mostrarMenuPrincipal: function () {
 		const core = window.CBCChatbot.core;
-		const translations = window.CBCChatbot.translations;
 
-		translations.traducirMenu();
-		translations.traducirBotonesVolver();
+		this.ejecutarTraduccion('traducirMenu');
+		this.ejecutarTraduccion('traducirBotonesVolver');
 
 		const pantalla = core.mostrarPantalla('menu');
 
@@ -173,10 +228,13 @@ window.CBCChatbot.navigation = {
 	 */
 	mostrarMedicinaEstetica: function () {
 		const core = window.CBCChatbot.core;
-		const translations = window.CBCChatbot.translations;
 
-		translations.traducirMedicinaEstetica();
-		translations.traducirBotonesVolver();
+		this.ejecutarTraduccion(
+			'traducirMedicinaEstetica'
+		);
+		this.ejecutarTraduccion(
+			'traducirBotonesVolver'
+		);
 
 		const pantalla = core.mostrarPantalla(
 			'medicina-estetica'
@@ -190,10 +248,9 @@ window.CBCChatbot.navigation = {
 	 */
 	mostrarRecuperacion: function () {
 		const core = window.CBCChatbot.core;
-		const translations = window.CBCChatbot.translations;
 
-		translations.traducirRecuperacion();
-		translations.traducirBotonesVolver();
+		this.ejecutarTraduccion('traducirRecuperacion');
+		this.ejecutarTraduccion('traducirBotonesVolver');
 
 		const pantalla = core.mostrarPantalla(
 			'recuperacion'
@@ -207,10 +264,9 @@ window.CBCChatbot.navigation = {
 	 */
 	mostrarSalud: function () {
 		const core = window.CBCChatbot.core;
-		const translations = window.CBCChatbot.translations;
 
-		translations.traducirSalud();
-		translations.traducirBotonesVolver();
+		this.ejecutarTraduccion('traducirSalud');
+		this.ejecutarTraduccion('traducirBotonesVolver');
 
 		const pantalla = core.mostrarPantalla('salud');
 
@@ -222,10 +278,9 @@ window.CBCChatbot.navigation = {
 	 */
 	mostrarPrecios: function () {
 		const core = window.CBCChatbot.core;
-		const translations = window.CBCChatbot.translations;
 
-		translations.traducirPrecios();
-		translations.traducirBotonesVolver();
+		this.ejecutarTraduccion('traducirPrecios');
+		this.ejecutarTraduccion('traducirBotonesVolver');
 
 		const pantalla = core.mostrarPantalla('precios');
 
@@ -245,10 +300,9 @@ window.CBCChatbot.navigation = {
 	 */
 	mostrarHorarios: function () {
 		const core = window.CBCChatbot.core;
-		const translations = window.CBCChatbot.translations;
 
-		translations.traducirHorarios();
-		translations.traducirBotonesVolver();
+		this.ejecutarTraduccion('traducirHorarios');
+		this.ejecutarTraduccion('traducirBotonesVolver');
 
 		const pantalla = core.mostrarPantalla('horarios');
 
@@ -260,10 +314,9 @@ window.CBCChatbot.navigation = {
 	 */
 	mostrarUbicacion: function () {
 		const core = window.CBCChatbot.core;
-		const translations = window.CBCChatbot.translations;
 
-		translations.traducirUbicacion();
-		translations.traducirBotonesVolver();
+		this.ejecutarTraduccion('traducirUbicacion');
+		this.ejecutarTraduccion('traducirBotonesVolver');
 
 		const pantalla = core.mostrarPantalla('ubicacion');
 
@@ -275,10 +328,9 @@ window.CBCChatbot.navigation = {
 	 */
 	mostrarContacto: function () {
 		const core = window.CBCChatbot.core;
-		const translations = window.CBCChatbot.translations;
 
-		translations.traducirContacto();
-		translations.traducirBotonesVolver();
+		this.ejecutarTraduccion('traducirContacto');
+		this.ejecutarTraduccion('traducirBotonesVolver');
 
 		const pantalla = core.mostrarPantalla('contacto');
 
@@ -292,7 +344,6 @@ window.CBCChatbot.navigation = {
 		const elementos = this.elementos;
 		const state = window.CBCChatbot.state;
 		const core = window.CBCChatbot.core;
-		const translations = window.CBCChatbot.translations;
 		const navigation = this;
 
 		elementos.botonesIdioma.forEach(function (botonIdioma) {
@@ -300,9 +351,17 @@ window.CBCChatbot.navigation = {
 				state.idiomaActual =
 					botonIdioma.dataset.idioma;
 
-				translations.traducirTituloChatbot();
-				translations.traducirBotonesVolver();
-				translations.traducirPantallaNombre();
+				navigation.ejecutarTraduccion(
+					'traducirTituloChatbot'
+				);
+
+				navigation.ejecutarTraduccion(
+					'traducirBotonesVolver'
+				);
+
+				navigation.ejecutarTraduccion(
+					'traducirPantallaNombre'
+				);
 
 				const pantalla = core.mostrarPantalla(
 					'nombre'
@@ -327,11 +386,19 @@ window.CBCChatbot.navigation = {
 		elementos.botonEscribirNombre.addEventListener(
 			'click',
 			function () {
-				translations.traducirFormularioNombre();
-				translations.traducirBotonesVolver();
+				navigation.ejecutarTraduccion(
+					'traducirFormularioNombre'
+				);
+
+				navigation.ejecutarTraduccion(
+					'traducirBotonesVolver'
+				);
 
 				elementos.errorNombre.hidden = true;
 				elementos.errorNombre.textContent = '';
+
+				elementos.campoNombre.value =
+					state.nombreUsuario || '';
 
 				const pantalla = core.mostrarPantalla(
 					'formulario-nombre'
@@ -344,7 +411,16 @@ window.CBCChatbot.navigation = {
 		elementos.botonSinNombre.addEventListener(
 			'click',
 			function () {
-				state.nombreUsuario = '';
+				if (
+					typeof state.guardarNombre === 'function'
+				) {
+					state.guardarNombre('');
+				} else {
+					state.nombreUsuario = '';
+				}
+
+				elementos.campoNombre.value = '';
+
 				navigation.mostrarMenuPrincipal();
 			}
 		);
@@ -370,7 +446,13 @@ window.CBCChatbot.navigation = {
 				elementos.errorNombre.hidden = true;
 				elementos.errorNombre.textContent = '';
 
-				state.nombreUsuario = nombreIntroducido;
+				if (
+					typeof state.guardarNombre === 'function'
+				) {
+					state.guardarNombre(nombreIntroducido);
+				} else {
+					state.nombreUsuario = nombreIntroducido;
+				}
 
 				navigation.mostrarMenuPrincipal();
 			}
@@ -383,7 +465,6 @@ window.CBCChatbot.navigation = {
 	registrarEventosVolver: function () {
 		const elementos = this.elementos;
 		const core = window.CBCChatbot.core;
-		const translations = window.CBCChatbot.translations;
 		const navigation = this;
 
 		elementos.botonesVolver.forEach(function (botonVolver) {
@@ -395,45 +476,31 @@ window.CBCChatbot.navigation = {
 					return;
 				}
 
-				switch (pantallaDestino) {
-					case 'nombre':
-						translations.traducirPantallaNombre();
-						break;
+				const traduccionesPantalla = {
+					nombre: 'traducirPantallaNombre',
+					menu: 'traducirMenu',
+					'medicina-estetica':
+						'traducirMedicinaEstetica',
+					recuperacion:
+						'traducirRecuperacion',
+					salud: 'traducirSalud',
+					precios: 'traducirPrecios',
+					horarios: 'traducirHorarios',
+					ubicacion: 'traducirUbicacion',
+					contacto: 'traducirContacto'
+				};
 
-					case 'menu':
-						translations.traducirMenu();
-						break;
-
-					case 'medicina-estetica':
-						translations.traducirMedicinaEstetica();
-						break;
-
-					case 'recuperacion':
-						translations.traducirRecuperacion();
-						break;
-
-					case 'salud':
-						translations.traducirSalud();
-						break;
-
-					case 'precios':
-						translations.traducirPrecios();
-						break;
-
-					case 'horarios':
-						translations.traducirHorarios();
-						break;
-
-					case 'ubicacion':
-						translations.traducirUbicacion();
-						break;
-
-					case 'contacto':
-						translations.traducirContacto();
-						break;
+				if (traduccionesPantalla[pantallaDestino]) {
+					navigation.ejecutarTraduccion(
+						traduccionesPantalla[
+							pantallaDestino
+						]
+					);
 				}
 
-				translations.traducirBotonesVolver();
+				navigation.ejecutarTraduccion(
+					'traducirBotonesVolver'
+				);
 
 				const pantalla = core.mostrarPantalla(
 					pantallaDestino
@@ -493,19 +560,31 @@ window.CBCChatbot.navigation = {
 	},
 
 	/**
-	 * Registra provisionalmente las subcategorías
+	 * Guarda las subcategorías seleccionadas
 	 * de Medicina estética.
+	 *
+	 * Cuando existan sus pantallas, aquí se añadirá
+	 * también la navegación a cada una.
 	 */
 	registrarEventosEstetica: function () {
 		const elementos = this.elementos;
+		const navigation = this;
 
 		elementos.botonesEstetica.forEach(function (boton) {
 			boton.addEventListener('click', function () {
 				const opcionElegida =
 					boton.dataset.estetica;
 
+				navigation.guardarCategoria(
+					'medicina-estetica'
+				);
+
+				navigation.guardarTratamiento(
+					opcionElegida
+				);
+
 				console.info(
-					'Subcategoría estética pendiente:',
+					'Subcategoría estética seleccionada:',
 					opcionElegida
 				);
 			});
@@ -513,11 +592,12 @@ window.CBCChatbot.navigation = {
 	},
 
 	/**
-	 * Registra provisionalmente las especialidades
+	 * Guarda las especialidades seleccionadas
 	 * de Recuperación y movimiento.
 	 */
 	registrarEventosRecuperacion: function () {
 		const elementos = this.elementos;
+		const navigation = this;
 
 		elementos.botonesRecuperacion.forEach(
 			function (boton) {
@@ -527,8 +607,16 @@ window.CBCChatbot.navigation = {
 						const opcionElegida =
 							boton.dataset.recuperacion;
 
+						navigation.guardarCategoria(
+							'recuperacion-movimiento'
+						);
+
+						navigation.guardarTratamiento(
+							opcionElegida
+						);
+
 						console.info(
-							'Especialidad de recuperación pendiente:',
+							'Especialidad de recuperación seleccionada:',
 							opcionElegida
 						);
 					}
@@ -538,19 +626,28 @@ window.CBCChatbot.navigation = {
 	},
 
 	/**
-	 * Registra provisionalmente las especialidades
+	 * Guarda las especialidades seleccionadas
 	 * de Salud y bienestar.
 	 */
 	registrarEventosSalud: function () {
 		const elementos = this.elementos;
+		const navigation = this;
 
 		elementos.botonesSalud.forEach(function (boton) {
 			boton.addEventListener('click', function () {
 				const opcionElegida =
 					boton.dataset.salud;
 
+				navigation.guardarCategoria(
+					'salud-bienestar'
+				);
+
+				navigation.guardarTratamiento(
+					opcionElegida
+				);
+
 				console.info(
-					'Especialidad de salud pendiente:',
+					'Especialidad de salud seleccionada:',
 					opcionElegida
 				);
 			});
@@ -571,14 +668,26 @@ window.CBCChatbot.navigation = {
 
 				switch (opcionElegida) {
 					case 'medicina-estetica':
+						navigation.guardarCategoria(
+							'medicina-estetica'
+						);
+
 						navigation.mostrarMedicinaEstetica();
 						break;
 
 					case 'recuperacion-movimiento':
+						navigation.guardarCategoria(
+							'recuperacion-movimiento'
+						);
+
 						navigation.mostrarRecuperacion();
 						break;
 
 					case 'salud-bienestar':
+						navigation.guardarCategoria(
+							'salud-bienestar'
+						);
+
 						navigation.mostrarSalud();
 						break;
 

@@ -298,6 +298,36 @@ window.CBCChatbot.translations = {
 	},
 
 	/**
+	 * Devuelve el nombre guardado durante la sesión.
+	 */
+	obtenerNombreUsuario: function () {
+		const state = window.CBCChatbot.state;
+
+		if (
+			!state ||
+			typeof state.nombreUsuario !== 'string'
+		) {
+			return '';
+		}
+
+		return state.nombreUsuario.trim();
+	},
+
+	/**
+	 * Añade el nombre al inicio de un mensaje
+	 * cuando el usuario lo ha indicado.
+	 */
+	personalizarTexto: function (texto) {
+		const nombre = this.obtenerNombreUsuario();
+
+		if (!nombre) {
+			return texto;
+		}
+
+		return nombre + ', ' + texto;
+	},
+
+	/**
 	 * Mantiene el nombre corporativo de la cabecera.
 	 */
 	traducirTituloChatbot: function () {
@@ -430,7 +460,7 @@ window.CBCChatbot.translations = {
 	 */
 	traducirMenu: function () {
 		const idioma = window.CBCChatbot.state.idiomaActual;
-		const nombre = window.CBCChatbot.state.nombreUsuario;
+		const nombre = this.obtenerNombreUsuario();
 		const elementos = this.obtenerElementos();
 
 		if (!elementos.saludoMenu || !elementos.preguntaMenu) {
@@ -762,7 +792,7 @@ window.CBCChatbot.translations = {
 					'Ens trobaràs al barri de l’Eixample, a València.',
 
 				googleMaps: 'Google Maps',
-				appleMaps: 'Apple Maps',
+				appleMaps: 'Maps',
 				llamar: 'Telefonar',
 				whatsapp: 'WhatsApp'
 			},
@@ -774,7 +804,7 @@ window.CBCChatbot.translations = {
 					'Encuéntranos en el barrio de L’Eixample, en València.',
 
 				googleMaps: 'Google Maps',
-				appleMaps: 'Apple Maps',
+				appleMaps: 'Maps',
 				llamar: 'Llamar',
 				whatsapp: 'WhatsApp'
 			},
@@ -786,7 +816,7 @@ window.CBCChatbot.translations = {
 					'You can find us in the L’Eixample district of Valencia.',
 
 				googleMaps: 'Google Maps',
-				appleMaps: 'Apple Maps',
+				appleMaps: 'Maps',
 				llamar: 'Call us',
 				whatsapp: 'WhatsApp'
 			}
@@ -918,9 +948,8 @@ window.CBCChatbot.translations = {
 		const textos = {
 			va: {
 				titulo: 'Medicina estètica',
-				pregunta: 'Quin tractament t’interessa?',
+				pregunta: 'quin tractament t’interessa?',
 				cita: 'Demanar cita',
-
 				opciones: {
 					'facial-armonizacion':
 						'Facial i harmonització',
@@ -941,9 +970,8 @@ window.CBCChatbot.translations = {
 
 			es: {
 				titulo: 'Medicina estética',
-				pregunta: '¿Qué tratamiento te interesa?',
+				pregunta: '¿qué tratamiento te interesa?',
 				cita: 'Pedir cita',
-
 				opciones: {
 					'facial-armonizacion':
 						'Facial y armonización',
@@ -964,12 +992,9 @@ window.CBCChatbot.translations = {
 
 			en: {
 				titulo: 'Aesthetic medicine',
-
 				pregunta:
-					'Which treatment are you interested in?',
-
+					'which treatment are you interested in?',
 				cita: 'Book an appointment',
-
 				opciones: {
 					'facial-armonizacion':
 						'Facial treatments and harmonisation',
@@ -990,12 +1015,19 @@ window.CBCChatbot.translations = {
 		};
 
 		const traduccion = textos[idioma] || textos.es;
+		const nombre = this.obtenerNombreUsuario();
 
 		elementos.tituloMedicinaEstetica.textContent =
 			traduccion.titulo;
 
 		elementos.textoMedicinaEstetica.textContent =
-			traduccion.pregunta;
+			nombre
+				? nombre + ', ' + traduccion.pregunta
+				: idioma === 'es'
+					? '¿Qué tratamiento te interesa?'
+					: idioma === 'en'
+						? 'Which treatment are you interested in?'
+						: 'Quin tractament t’interessa?';
 
 		elementos.botonCitaEstetica.textContent =
 			traduccion.cita;
@@ -1026,22 +1058,17 @@ window.CBCChatbot.translations = {
 		const textos = {
 			va: {
 				titulo: 'Recuperació i moviment',
-				pregunta: 'En quina àrea podem ajudar-te?',
+				pregunta: 'en quina àrea podem ajudar-te?',
+				preguntaSinNombre:
+					'En quina àrea podem ajudar-te?',
 				cita: 'Demanar cita',
-
 				opciones: {
-					fisioterapia:
-						'Fisioteràpia',
-
-					traumatologia:
-						'Traumatologia',
-
+					fisioterapia: 'Fisioteràpia',
+					traumatologia: 'Traumatologia',
 					'medicina-regenerativa':
 						'Medicina regenerativa',
-
 					'pilates-terapeutico':
 						'Pilates terapèutic',
-
 					'entrenamiento-terapeutico':
 						'Entrenament terapèutic'
 				}
@@ -1049,22 +1076,17 @@ window.CBCChatbot.translations = {
 
 			es: {
 				titulo: 'Recuperación y movimiento',
-				pregunta: '¿En qué área podemos ayudarte?',
+				pregunta: '¿en qué área podemos ayudarte?',
+				preguntaSinNombre:
+					'¿En qué área podemos ayudarte?',
 				cita: 'Pedir cita',
-
 				opciones: {
-					fisioterapia:
-						'Fisioterapia',
-
-					traumatologia:
-						'Traumatología',
-
+					fisioterapia: 'Fisioterapia',
+					traumatologia: 'Traumatología',
 					'medicina-regenerativa':
 						'Medicina regenerativa',
-
 					'pilates-terapeutico':
 						'Pilates terapéutico',
-
 					'entrenamiento-terapeutico':
 						'Entrenamiento terapéutico'
 				}
@@ -1072,25 +1094,18 @@ window.CBCChatbot.translations = {
 
 			en: {
 				titulo: 'Recovery and movement',
-
 				pregunta:
+					'which area can we help you with?',
+				preguntaSinNombre:
 					'Which area can we help you with?',
-
 				cita: 'Book an appointment',
-
 				opciones: {
-					fisioterapia:
-						'Physiotherapy',
-
-					traumatologia:
-						'Traumatology',
-
+					fisioterapia: 'Physiotherapy',
+					traumatologia: 'Traumatology',
 					'medicina-regenerativa':
 						'Regenerative medicine',
-
 					'pilates-terapeutico':
 						'Therapeutic Pilates',
-
 					'entrenamiento-terapeutico':
 						'Therapeutic training'
 				}
@@ -1098,12 +1113,15 @@ window.CBCChatbot.translations = {
 		};
 
 		const traduccion = textos[idioma] || textos.es;
+		const nombre = this.obtenerNombreUsuario();
 
 		elementos.tituloRecuperacion.textContent =
 			traduccion.titulo;
 
 		elementos.textoRecuperacion.textContent =
-			traduccion.pregunta;
+			nombre
+				? nombre + ', ' + traduccion.pregunta
+				: traduccion.preguntaSinNombre;
 
 		elementos.botonCitaRecuperacion.textContent =
 			traduccion.cita;
@@ -1134,22 +1152,16 @@ window.CBCChatbot.translations = {
 		const textos = {
 			va: {
 				titulo: 'Salut i benestar',
-				pregunta: 'En quina àrea podem ajudar-te?',
+				pregunta: 'en quina àrea podem ajudar-te?',
+				preguntaSinNombre:
+					'En quina àrea podem ajudar-te?',
 				cita: 'Demanar cita',
-
 				opciones: {
-					podologia:
-						'Podologia',
-
-					'perdida-peso':
-						'Pèrdua de pes',
-
-					psicologia:
-						'Psicologia',
-
+					podologia: 'Podologia',
+					'perdida-peso': 'Pèrdua de pes',
+					psicologia: 'Psicologia',
 					'valoracion-integral':
 						'Valoració integral',
-
 					'prevencion-seguimiento':
 						'Prevenció i seguiment'
 				}
@@ -1157,22 +1169,16 @@ window.CBCChatbot.translations = {
 
 			es: {
 				titulo: 'Salud y bienestar',
-				pregunta: '¿En qué área podemos ayudarte?',
+				pregunta: '¿en qué área podemos ayudarte?',
+				preguntaSinNombre:
+					'¿En qué área podemos ayudarte?',
 				cita: 'Pedir cita',
-
 				opciones: {
-					podologia:
-						'Podología',
-
-					'perdida-peso':
-						'Pérdida de peso',
-
-					psicologia:
-						'Psicología',
-
+					podologia: 'Podología',
+					'perdida-peso': 'Pérdida de peso',
+					psicologia: 'Psicología',
 					'valoracion-integral':
 						'Valoración integral',
-
 					'prevencion-seguimiento':
 						'Prevención y seguimiento'
 				}
@@ -1180,25 +1186,17 @@ window.CBCChatbot.translations = {
 
 			en: {
 				titulo: 'Health and wellness',
-
 				pregunta:
+					'which area can we help you with?',
+				preguntaSinNombre:
 					'Which area can we help you with?',
-
 				cita: 'Book an appointment',
-
 				opciones: {
-					podologia:
-						'Podiatry',
-
-					'perdida-peso':
-						'Weight management',
-
-					psicologia:
-						'Psychology',
-
+					podologia: 'Podiatry',
+					'perdida-peso': 'Weight management',
+					psicologia: 'Psychology',
 					'valoracion-integral':
 						'Comprehensive assessment',
-
 					'prevencion-seguimiento':
 						'Prevention and follow-up'
 				}
@@ -1206,12 +1204,15 @@ window.CBCChatbot.translations = {
 		};
 
 		const traduccion = textos[idioma] || textos.es;
+		const nombre = this.obtenerNombreUsuario();
 
 		elementos.tituloSalud.textContent =
 			traduccion.titulo;
 
 		elementos.textoSalud.textContent =
-			traduccion.pregunta;
+			nombre
+				? nombre + ', ' + traduccion.pregunta
+				: traduccion.preguntaSinNombre;
 
 		elementos.botonCitaSalud.textContent =
 			traduccion.cita;
@@ -1311,12 +1312,19 @@ window.CBCChatbot.translations = {
 		};
 
 		const traduccion = textos[idioma] || textos.es;
+		const nombre = this.obtenerNombreUsuario();
 
 		elementos.tituloPrecios.textContent =
 			traduccion.titulo;
 
-		elementos.textoPrecios.textContent =
-			traduccion.introduccion;
+		elementos.textoPrecios.textContent = 
+		    nombre
+				? nombre + ', ' +
+					traduccion.introduccion
+						.charAt(0)
+						.toLowerCase() +
+					traduccion.introduccion.slice(1)
+				: traduccion.introduccion;
 
 		elementos.descripcionPrecios.textContent =
 			traduccion.descripcion;

@@ -13,7 +13,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	data-pantalla="nombre"
 	hidden
 >
-	<p class="cbc-chatbot__pregunta-nombre"></p>
+	<p class="cbc-chatbot__pregunta-nombre">
+		¿Cómo te llamas?
+	</p>
+
+	<p class="cbc-chatbot__ayuda-nombre cbc-chatbot__ayuda-nombre-inicial">
+		Es opcional. Lo utilizaremos para personalizar esta conversación.
+	</p>
 
 	<div class="cbc-chatbot__opciones">
 
@@ -47,8 +53,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	data-pantalla="formulario-nombre"
 	hidden
 >
-	<form class="cbc-chatbot__formulario-nombre">
-
+	<form
+		class="cbc-chatbot__formulario-nombre"
+		novalidate
+	>
 		<label
 			for="cbc-chatbot-nombre"
 			class="cbc-chatbot__etiqueta-nombre"
@@ -63,11 +71,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 			name="cbc_chatbot_nombre"
 			maxlength="50"
 			autocomplete="given-name"
+			autocapitalize="words"
+			spellcheck="false"
+			aria-describedby="cbc-chatbot-ayuda-formulario-nombre cbc-chatbot-error-nombre"
 		>
 
 		<p
+			id="cbc-chatbot-ayuda-formulario-nombre"
+			class="cbc-chatbot__ayuda-nombre cbc-chatbot__ayuda-formulario-nombre"
+		>
+			El nombre se conservará únicamente durante esta sesión para personalizar el asistente.
+		</p>
+
+		<p
+			id="cbc-chatbot-error-nombre"
 			class="cbc-chatbot__error-nombre"
 			role="alert"
+			aria-live="polite"
 			hidden
 		></p>
 

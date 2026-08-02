@@ -13,77 +13,93 @@ if ( ! defined( 'ABSPATH' ) ) {
 	data-pantalla="menu"
 	hidden
 >
-	<p class="cbc-chatbot__saludo-menu"></p>
+	<p
+		id="cbc-chatbot-saludo-menu"
+		class="cbc-chatbot__saludo-menu"
+		aria-live="polite"
+	>
+		Hola.
+	</p>
 
-	<p class="cbc-chatbot__pregunta-menu"></p>
+	<p
+		id="cbc-chatbot-pregunta-menu"
+		class="cbc-chatbot__pregunta-menu"
+	>
+		¿En qué podemos ayudarte?
+	</p>
 
-	<div class="cbc-chatbot__opciones">
+	<nav
+		class="cbc-chatbot__menu-principal"
+		aria-labelledby="cbc-chatbot-pregunta-menu"
+	>
+		<div class="cbc-chatbot__opciones">
 
-		<button
-			type="button"
-			class="cbc-chatbot__opcion cbc-chatbot__opcion--destacada"
-			data-menu="medicina-estetica"
-		>
-			Medicina estética
-		</button>
+			<button
+				type="button"
+				class="cbc-chatbot__opcion cbc-chatbot__opcion--destacada"
+				data-menu="medicina-estetica"
+			>
+				Medicina estética
+			</button>
 
-		<button
-			type="button"
-			class="cbc-chatbot__opcion"
-			data-menu="recuperacion-movimiento"
-		>
-			Recuperación y movimiento
-		</button>
+			<button
+				type="button"
+				class="cbc-chatbot__opcion"
+				data-menu="recuperacion-movimiento"
+			>
+				Recuperación y movimiento
+			</button>
 
-		<button
-			type="button"
-			class="cbc-chatbot__opcion"
-			data-menu="salud-bienestar"
-		>
-			Salud y bienestar
-		</button>
+			<button
+				type="button"
+				class="cbc-chatbot__opcion"
+				data-menu="salud-bienestar"
+			>
+				Salud y bienestar
+			</button>
 
-		<button
-			type="button"
-			class="cbc-chatbot__opcion"
-			data-menu="precios"
-		>
-			Precios
-		</button>
+			<button
+				type="button"
+				class="cbc-chatbot__opcion"
+				data-menu="precios"
+			>
+				Precios
+			</button>
 
-		<button
-			type="button"
-			class="cbc-chatbot__opcion"
-			data-menu="cita"
-		>
-			Pedir cita
-		</button>
+			<button
+				type="button"
+				class="cbc-chatbot__opcion cbc-chatbot__opcion--destacada"
+				data-menu="cita"
+			>
+				Pedir cita
+			</button>
 
-		<button
-			type="button"
-			class="cbc-chatbot__opcion"
-			data-menu="horarios"
-		>
-			Horarios
-		</button>
+			<button
+				type="button"
+				class="cbc-chatbot__opcion"
+				data-menu="horarios"
+			>
+				Horarios
+			</button>
 
-		<button
-			type="button"
-			class="cbc-chatbot__opcion"
-			data-menu="ubicacion"
-		>
-			Dónde estamos
-		</button>
+			<button
+				type="button"
+				class="cbc-chatbot__opcion"
+				data-menu="ubicacion"
+			>
+				Dónde estamos
+			</button>
 
-		<button
-			type="button"
-			class="cbc-chatbot__opcion"
-			data-menu="contacto"
-		>
-			Contactar con HealthyVal
-		</button>
+			<button
+				type="button"
+				class="cbc-chatbot__opcion"
+				data-menu="contacto"
+			>
+				Contactar con HealthyVal
+			</button>
 
-	</div>
+		</div>
+	</nav>
 
 	<button
 		type="button"

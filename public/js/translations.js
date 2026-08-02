@@ -15,6 +15,14 @@ window.CBCChatbot.translations = {
 				'.cbc-chatbot__pregunta-nombre'
 			),
 
+			ayudaNombreInicial: document.querySelector(
+				'.cbc-chatbot__ayuda-nombre-inicial'
+			),
+
+			ayudaFormularioNombre: document.querySelector(
+				'.cbc-chatbot__ayuda-formulario-nombre'
+			),
+
 			botonEscribirNombre: document.querySelector(
 				'.cbc-chatbot__escribir-nombre'
 			),
@@ -370,6 +378,7 @@ window.CBCChatbot.translations = {
 
 		if (
 			!elementos.preguntaNombre ||
+			!elementos.ayudaNombreInicial ||
 			!elementos.botonEscribirNombre ||
 			!elementos.botonSinNombre
 		) {
@@ -379,18 +388,24 @@ window.CBCChatbot.translations = {
 		const textos = {
 			va: {
 				pregunta: 'Com et dius?',
+				ayuda:
+					'És opcional. L’utilitzarem per personalitzar aquesta conversa.',
 				escribir: 'Escriure el meu nom',
 				continuar: 'Continuar sense nom'
 			},
 
 			es: {
 				pregunta: '¿Cómo te llamas?',
+				ayuda:
+					'Es opcional. Lo utilizaremos para personalizar esta conversación.',
 				escribir: 'Escribir mi nombre',
 				continuar: 'Continuar sin nombre'
 			},
 
 			en: {
 				pregunta: 'What is your name?',
+				ayuda:
+					'This is optional. We will use it to personalise this conversation.',
 				escribir: 'Enter my name',
 				continuar: 'Continue without a name'
 			}
@@ -400,6 +415,9 @@ window.CBCChatbot.translations = {
 
 		elementos.preguntaNombre.textContent =
 			traduccion.pregunta;
+
+		elementos.ayudaNombreInicial.textContent =
+			traduccion.ayuda;
 
 		elementos.botonEscribirNombre.textContent =
 			traduccion.escribir;
@@ -418,6 +436,7 @@ window.CBCChatbot.translations = {
 		if (
 			!elementos.etiquetaNombre ||
 			!elementos.campoNombre ||
+			!elementos.ayudaFormularioNombre ||
 			!elementos.botonGuardarNombre
 		) {
 			return;
@@ -427,18 +446,24 @@ window.CBCChatbot.translations = {
 			va: {
 				etiqueta: 'Escriu el teu nom',
 				placeholder: 'El teu nom',
+				ayuda:
+					'El nom es conservarà únicament durant aquesta sessió per personalitzar l’assistent.',
 				continuar: 'Continuar'
 			},
 
 			es: {
 				etiqueta: 'Escribe tu nombre',
 				placeholder: 'Tu nombre',
+				ayuda:
+					'El nombre se conservará únicamente durante esta sesión para personalizar el asistente.',
 				continuar: 'Continuar'
 			},
 
 			en: {
 				etiqueta: 'Enter your name',
 				placeholder: 'Your name',
+				ayuda:
+					'Your name will only be kept during this session to personalise the assistant.',
 				continuar: 'Continue'
 			}
 		};
@@ -450,6 +475,9 @@ window.CBCChatbot.translations = {
 
 		elementos.campoNombre.placeholder =
 			traduccion.placeholder;
+
+		elementos.ayudaFormularioNombre.textContent =
+			traduccion.ayuda;
 
 		elementos.botonGuardarNombre.textContent =
 			traduccion.continuar;
@@ -787,10 +815,8 @@ window.CBCChatbot.translations = {
 		const textos = {
 			va: {
 				titulo: 'On estem',
-
 				introduccion:
 					'Ens trobaràs al barri de l’Eixample, a València.',
-
 				googleMaps: 'Google Maps',
 				appleMaps: 'Maps',
 				llamar: 'Telefonar',
@@ -799,10 +825,8 @@ window.CBCChatbot.translations = {
 
 			es: {
 				titulo: 'Dónde estamos',
-
 				introduccion:
 					'Encuéntranos en el barrio de L’Eixample, en València.',
-
 				googleMaps: 'Google Maps',
 				appleMaps: 'Maps',
 				llamar: 'Llamar',
@@ -811,10 +835,8 @@ window.CBCChatbot.translations = {
 
 			en: {
 				titulo: 'Find us',
-
 				introduccion:
 					'You can find us in the L’Eixample district of Valencia.',
-
 				googleMaps: 'Google Maps',
 				appleMaps: 'Maps',
 				llamar: 'Call us',
@@ -862,36 +884,27 @@ window.CBCChatbot.translations = {
 		const textos = {
 			va: {
 				titulo: 'Contactar amb HealthyVal',
-
 				introduccion:
 					'Tria com prefereixes contactar amb nosaltres.',
-
 				whatsapp: 'WhatsApp',
-
 				redes:
 					'Segueix-nos en xarxes socials'
 			},
 
 			es: {
 				titulo: 'Contactar con HealthyVal',
-
 				introduccion:
 					'Elige cómo prefieres contactar con nosotros.',
-
 				whatsapp: 'WhatsApp',
-
 				redes:
 					'Síguenos en redes sociales'
 			},
 
 			en: {
 				titulo: 'Contact HealthyVal',
-
 				introduccion:
 					'Choose how you would like to contact us.',
-
 				whatsapp: 'WhatsApp',
-
 				redes:
 					'Follow us on social media'
 			}
@@ -920,9 +933,7 @@ window.CBCChatbot.translations = {
 
 		const textos = {
 			va: 'Escriu un nom d’almenys 2 caràcters.',
-
 			es: 'Escribe un nombre de al menos 2 caracteres.',
-
 			en: 'Enter a name with at least 2 characters.'
 		};
 
@@ -948,8 +959,12 @@ window.CBCChatbot.translations = {
 		const textos = {
 			va: {
 				titulo: 'Medicina estètica',
-				pregunta: 'quin tractament t’interessa?',
+				pregunta:
+					'quin tractament t’interessa?',
+				preguntaSinNombre:
+					'Quin tractament t’interessa?',
 				cita: 'Demanar cita',
+
 				opciones: {
 					'facial-armonizacion':
 						'Facial i harmonització',
@@ -970,8 +985,12 @@ window.CBCChatbot.translations = {
 
 			es: {
 				titulo: 'Medicina estética',
-				pregunta: '¿qué tratamiento te interesa?',
+				pregunta:
+					'¿qué tratamiento te interesa?',
+				preguntaSinNombre:
+					'¿Qué tratamiento te interesa?',
 				cita: 'Pedir cita',
+
 				opciones: {
 					'facial-armonizacion':
 						'Facial y armonización',
@@ -994,7 +1013,10 @@ window.CBCChatbot.translations = {
 				titulo: 'Aesthetic medicine',
 				pregunta:
 					'which treatment are you interested in?',
+				preguntaSinNombre:
+					'Which treatment are you interested in?',
 				cita: 'Book an appointment',
+
 				opciones: {
 					'facial-armonizacion':
 						'Facial treatments and harmonisation',
@@ -1023,11 +1045,7 @@ window.CBCChatbot.translations = {
 		elementos.textoMedicinaEstetica.textContent =
 			nombre
 				? nombre + ', ' + traduccion.pregunta
-				: idioma === 'es'
-					? '¿Qué tratamiento te interesa?'
-					: idioma === 'en'
-						? 'Which treatment are you interested in?'
-						: 'Quin tractament t’interessa?';
+				: traduccion.preguntaSinNombre;
 
 		elementos.botonCitaEstetica.textContent =
 			traduccion.cita;
@@ -1058,17 +1076,25 @@ window.CBCChatbot.translations = {
 		const textos = {
 			va: {
 				titulo: 'Recuperació i moviment',
-				pregunta: 'en quina àrea podem ajudar-te?',
+				pregunta:
+					'en quina àrea podem ajudar-te?',
 				preguntaSinNombre:
 					'En quina àrea podem ajudar-te?',
 				cita: 'Demanar cita',
+
 				opciones: {
-					fisioterapia: 'Fisioteràpia',
-					traumatologia: 'Traumatologia',
+					fisioterapia:
+						'Fisioteràpia',
+
+					traumatologia:
+						'Traumatologia',
+
 					'medicina-regenerativa':
 						'Medicina regenerativa',
+
 					'pilates-terapeutico':
 						'Pilates terapèutic',
+
 					'entrenamiento-terapeutico':
 						'Entrenament terapèutic'
 				}
@@ -1076,17 +1102,25 @@ window.CBCChatbot.translations = {
 
 			es: {
 				titulo: 'Recuperación y movimiento',
-				pregunta: '¿en qué área podemos ayudarte?',
+				pregunta:
+					'¿en qué área podemos ayudarte?',
 				preguntaSinNombre:
 					'¿En qué área podemos ayudarte?',
 				cita: 'Pedir cita',
+
 				opciones: {
-					fisioterapia: 'Fisioterapia',
-					traumatologia: 'Traumatología',
+					fisioterapia:
+						'Fisioterapia',
+
+					traumatologia:
+						'Traumatología',
+
 					'medicina-regenerativa':
 						'Medicina regenerativa',
+
 					'pilates-terapeutico':
 						'Pilates terapéutico',
+
 					'entrenamiento-terapeutico':
 						'Entrenamiento terapéutico'
 				}
@@ -1099,13 +1133,20 @@ window.CBCChatbot.translations = {
 				preguntaSinNombre:
 					'Which area can we help you with?',
 				cita: 'Book an appointment',
+
 				opciones: {
-					fisioterapia: 'Physiotherapy',
-					traumatologia: 'Traumatology',
+					fisioterapia:
+						'Physiotherapy',
+
+					traumatologia:
+						'Traumatology',
+
 					'medicina-regenerativa':
 						'Regenerative medicine',
+
 					'pilates-terapeutico':
 						'Therapeutic Pilates',
+
 					'entrenamiento-terapeutico':
 						'Therapeutic training'
 				}
@@ -1152,16 +1193,25 @@ window.CBCChatbot.translations = {
 		const textos = {
 			va: {
 				titulo: 'Salut i benestar',
-				pregunta: 'en quina àrea podem ajudar-te?',
+				pregunta:
+					'en quina àrea podem ajudar-te?',
 				preguntaSinNombre:
 					'En quina àrea podem ajudar-te?',
 				cita: 'Demanar cita',
+
 				opciones: {
-					podologia: 'Podologia',
-					'perdida-peso': 'Pèrdua de pes',
-					psicologia: 'Psicologia',
+					podologia:
+						'Podologia',
+
+					'perdida-peso':
+						'Pèrdua de pes',
+
+					psicologia:
+						'Psicologia',
+
 					'valoracion-integral':
 						'Valoració integral',
+
 					'prevencion-seguimiento':
 						'Prevenció i seguiment'
 				}
@@ -1169,16 +1219,25 @@ window.CBCChatbot.translations = {
 
 			es: {
 				titulo: 'Salud y bienestar',
-				pregunta: '¿en qué área podemos ayudarte?',
+				pregunta:
+					'¿en qué área podemos ayudarte?',
 				preguntaSinNombre:
 					'¿En qué área podemos ayudarte?',
 				cita: 'Pedir cita',
+
 				opciones: {
-					podologia: 'Podología',
-					'perdida-peso': 'Pérdida de peso',
-					psicologia: 'Psicología',
+					podologia:
+						'Podología',
+
+					'perdida-peso':
+						'Pérdida de peso',
+
+					psicologia:
+						'Psicología',
+
 					'valoracion-integral':
 						'Valoración integral',
+
 					'prevencion-seguimiento':
 						'Prevención y seguimiento'
 				}
@@ -1191,12 +1250,20 @@ window.CBCChatbot.translations = {
 				preguntaSinNombre:
 					'Which area can we help you with?',
 				cita: 'Book an appointment',
+
 				opciones: {
-					podologia: 'Podiatry',
-					'perdida-peso': 'Weight management',
-					psicologia: 'Psychology',
+					podologia:
+						'Podiatry',
+
+					'perdida-peso':
+						'Weight management',
+
+					psicologia:
+						'Psychology',
+
 					'valoracion-integral':
 						'Comprehensive assessment',
+
 					'prevencion-seguimiento':
 						'Prevention and follow-up'
 				}
@@ -1317,8 +1384,8 @@ window.CBCChatbot.translations = {
 		elementos.tituloPrecios.textContent =
 			traduccion.titulo;
 
-		elementos.textoPrecios.textContent = 
-		    nombre
+		elementos.textoPrecios.textContent =
+			nombre
 				? nombre + ', ' +
 					traduccion.introduccion
 						.charAt(0)

@@ -6,23 +6,144 @@ window.CBCChatbot.state = {
 	categoriaSeleccionada: '',
 	tratamientoSeleccionado: '',
 
+	clavesSesion: {
+		idioma: 'cbcIdiomaActual',
+		nombre: 'cbcNombreUsuario',
+		categoria: 'cbcCategoriaSeleccionada',
+		tratamiento: 'cbcTratamientoSeleccionado'
+	},
+
+	/**
+	 * Comprueba si sessionStorage está disponible.
+	 */
+	sesionDisponible: function () {
+		try {
+			const clavePrueba = 'cbcPruebaSesion';
+
+			sessionStorage.setItem(clavePrueba, '1');
+			sessionStorage.removeItem(clavePrueba);
+
+			return true;
+		} catch (error) {
+			console.warn(
+				'El almacenamiento temporal del chatbot no está disponible.',
+				error
+			);
+
+			return false;
+		}
+	},
+
+	/**
+	 * Lee un valor de sessionStorage de forma segura.
+	 */
+	obtenerValorSesion: function (clave) {
+		if (!this.sesionDisponible()) {
+			return '';
+		}
+
+		try {
+			return sessionStorage.getItem(clave) || '';
+		} catch (error) {
+			console.warn(
+				'No se pudo recuperar un dato temporal del chatbot.',
+				error
+			);
+
+			return '';
+		}
+	},
+
+	/**
+	 * Guarda o elimina un valor de sessionStorage.
+	 */
+	guardarValorSesion: function (clave, valor) {
+		if (!this.sesionDisponible()) {
+			return;
+		}
+
+		try {
+			if (valor) {
+				sessionStorage.setItem(clave, valor);
+			} else {
+				sessionStorage.removeItem(clave);
+			}
+		} catch (error) {
+			console.warn(
+				'No se pudo guardar un dato temporal del chatbot.',
+				error
+			);
+		}
+	},
+
+	/**
+	 * Normaliza un valor de texto.
+	 */
+	normalizarTexto: function (valor) {
+		return typeof valor === 'string'
+			? valor.trim()
+			: '';
+	},
+
+	/**
+	 * Comprueba que el idioma sea válido.
+	 */
+	normalizarIdioma: function (idioma) {
+		const idiomaLimpio = this.normalizarTexto(idioma);
+
+		return ['va', 'es', 'en'].includes(idiomaLimpio)
+			? idiomaLimpio
+			: 'va';
+	},
+
 	/**
 	 * Recupera los datos temporales guardados
 	 * durante la sesión actual del navegador.
 	 */
 	cargarSesion: function () {
-		const nombreGuardado =
-			sessionStorage.getItem('cbcNombreUsuario');
+		const idiomaGuardado = this.obtenerValorSesion(
+			this.clavesSesion.idioma
+		);
 
-		const categoriaGuardada =
-			sessionStorage.getItem('cbcCategoriaSeleccionada');
+		const nombreGuardado = this.obtenerValorSesion(
+			this.clavesSesion.nombre
+		);
 
-		const tratamientoGuardado =
-			sessionStorage.getItem('cbcTratamientoSeleccionado');
+		const categoriaGuardada = this.obtenerValorSesion(
+			this.clavesSesion.categoria
+		);
 
-		this.nombreUsuario = nombreGuardado || '';
-		this.categoriaSeleccionada = categoriaGuardada || '';
-		this.tratamientoSeleccionado = tratamientoGuardado || '';
+		const tratamientoGuardado = this.obtenerValorSesion(
+			this.clavesSesion.tratamiento
+		);
+
+		this.idiomaActual = idiomaGuardado
+			? this.normalizarIdioma(idiomaGuardado)
+			: 'va';
+
+		this.nombreUsuario =
+			this.normalizarTexto(nombreGuardado);
+
+		this.categoriaSeleccionada =
+			this.normalizarTexto(categoriaGuardada);
+
+		this.tratamientoSeleccionado =
+			this.normalizarTexto(tratamientoGuardado);
+	},
+
+	/**
+	 * Guarda temporalmente el idioma seleccionado.
+	 */
+	guardarIdioma: function (idioma) {
+		const idiomaNormalizado =
+			this.normalizarIdioma(idioma);
+
+		this.idiomaActual = idiomaNormalizado;
+
+		this.guardarValorSesion(
+			this.clavesSesion.idioma,
+			idiomaNormalizado
+		);
 	},
 
 	/**
@@ -30,116 +151,116 @@ window.CBCChatbot.state = {
 	 */
 	guardarNombre: function (nombre) {
 		const nombreLimpio =
-			typeof nombre === 'string'
-				? nombre.trim()
-				: '';
+			this.normalizarTexto(nombre);
 
 		this.nombreUsuario = nombreLimpio;
 
-		if (nombreLimpio) {
-			sessionStorage.setItem(
-				'cbcNombreUsuario',
-				nombreLimpio
-			);
-		} else {
-			sessionStorage.removeItem(
-				'cbcNombreUsuario'
-			);
-		}
+		this.guardarValorSesion(
+			this.clavesSesion.nombre,
+			nombreLimpio
+		);
 	},
 
 	/**
-	 * Guarda la categoría general seleccionada.
-	 *
-	 * Ejemplos:
-	 * medicina-estetica
-	 * recuperacion-movimiento
-	 * salud-bienestar
+	 * Guarda la categoría general seleccionada
+	 * y elimina cualquier tratamiento anterior.
 	 */
 	guardarCategoria: function (categoria) {
 		const categoriaLimpia =
-			typeof categoria === 'string'
-				? categoria.trim()
-				: '';
+			this.normalizarTexto(categoria);
 
-		this.categoriaSeleccionada = categoriaLimpia;
+		this.categoriaSeleccionada =
+			categoriaLimpia;
 
-		if (categoriaLimpia) {
-			sessionStorage.setItem(
-				'cbcCategoriaSeleccionada',
-				categoriaLimpia
-			);
-		} else {
-			sessionStorage.removeItem(
-				'cbcCategoriaSeleccionada'
-			);
-		}
+		this.guardarValorSesion(
+			this.clavesSesion.categoria,
+			categoriaLimpia
+		);
+
+		this.guardarTratamiento('');
 	},
 
 	/**
 	 * Guarda el tratamiento o especialidad concreta.
-	 *
-	 * Ejemplos:
-	 * facial-armonizacion
-	 * fisioterapia
-	 * psicologia
 	 */
 	guardarTratamiento: function (tratamiento) {
 		const tratamientoLimpio =
-			typeof tratamiento === 'string'
-				? tratamiento.trim()
-				: '';
+			this.normalizarTexto(tratamiento);
 
 		this.tratamientoSeleccionado =
 			tratamientoLimpio;
 
-		if (tratamientoLimpio) {
-			sessionStorage.setItem(
-				'cbcTratamientoSeleccionado',
-				tratamientoLimpio
-			);
-		} else {
-			sessionStorage.removeItem(
-				'cbcTratamientoSeleccionado'
-			);
-		}
+		this.guardarValorSesion(
+			this.clavesSesion.tratamiento,
+			tratamientoLimpio
+		);
 	},
 
 	/**
 	 * Limpia la categoría y el tratamiento seleccionados,
-	 * pero mantiene el nombre del usuario.
+	 * pero conserva el nombre y el idioma.
 	 */
 	limpiarSeleccion: function () {
 		this.categoriaSeleccionada = '';
 		this.tratamientoSeleccionado = '';
 
-		sessionStorage.removeItem(
-			'cbcCategoriaSeleccionada'
+		this.guardarValorSesion(
+			this.clavesSesion.categoria,
+			''
 		);
 
-		sessionStorage.removeItem(
-			'cbcTratamientoSeleccionado'
+		this.guardarValorSesion(
+			this.clavesSesion.tratamiento,
+			''
 		);
 	},
 
 	/**
-	 * Elimina todos los datos temporales del chatbot.
+	 * Elimina el nombre, la categoría y el tratamiento,
+	 * pero mantiene el idioma seleccionado.
 	 */
-	limpiarSesion: function () {
+	limpiarDatosUsuario: function () {
 		this.nombreUsuario = '';
 		this.categoriaSeleccionada = '';
 		this.tratamientoSeleccionado = '';
 
-		sessionStorage.removeItem(
-			'cbcNombreUsuario'
+		this.guardarValorSesion(
+			this.clavesSesion.nombre,
+			''
 		);
 
-		sessionStorage.removeItem(
-			'cbcCategoriaSeleccionada'
+		this.guardarValorSesion(
+			this.clavesSesion.categoria,
+			''
 		);
 
-		sessionStorage.removeItem(
-			'cbcTratamientoSeleccionado'
+		this.guardarValorSesion(
+			this.clavesSesion.tratamiento,
+			''
+		);
+	},
+
+	/**
+	 * Elimina todos los datos temporales del chatbot
+	 * y restaura el idioma inicial.
+	 */
+	limpiarSesion: function () {
+		this.idiomaActual = 'va';
+		this.nombreUsuario = '';
+		this.categoriaSeleccionada = '';
+		this.tratamientoSeleccionado = '';
+
+		Object.values(this.clavesSesion).forEach(
+			function (clave) {
+				try {
+					sessionStorage.removeItem(clave);
+				} catch (error) {
+					console.warn(
+						'No se pudo eliminar un dato temporal del chatbot.',
+						error
+					);
+				}
+			}
 		);
 	}
 };

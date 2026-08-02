@@ -1,6 +1,6 @@
 <?php
 /**
- * Pantalla de contacto y redes sociales.
+ * Pantalla de contacto y redes sociales de HealthyVal.
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -14,20 +14,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 	hidden
 >
 	<h3
+		id="cbc-chatbot-titulo-contacto"
 		class="cbc-chatbot__subtitulo cbc-chatbot__titulo-contacto"
 	>
 		Contactar con HealthyVal
 	</h3>
 
-	<p class="cbc-chatbot__texto-contacto">
+	<p
+		id="cbc-chatbot-texto-contacto"
+		class="cbc-chatbot__texto-contacto"
+	>
 		Elige cómo prefieres contactar con nosotros.
 	</p>
 
-	<div class="cbc-chatbot__acciones-contacto">
-
+	<div
+		class="cbc-chatbot__acciones-contacto"
+		aria-labelledby="cbc-chatbot-titulo-contacto"
+	>
 		<a
 			class="cbc-chatbot__accion-contacto"
 			href="tel:+34624810547"
+			data-contacto="telefono"
 			aria-label="Llamar a HealthyVal al 624 810 547"
 		>
 			<svg
@@ -55,10 +62,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</a>
 
 		<a
-			class="cbc-chatbot__accion-contacto cbc-chatbot__accion-contacto--whatsapp"
+			class="cbc-chatbot__accion-contacto cbc-chatbot__accion-contacto--whatsapp cbc-chatbot__enlace-whatsapp"
 			href="https://wa.me/34624810547"
 			target="_blank"
 			rel="noopener noreferrer"
+			data-contacto="whatsapp"
+			data-whatsapp-contexto="contacto"
 			aria-label="Abrir WhatsApp de HealthyVal"
 		>
 			<svg
@@ -95,6 +104,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<a
 			class="cbc-chatbot__accion-contacto"
 			href="mailto:info@healthyval.es"
+			data-contacto="correo"
 			aria-label="Enviar un correo electrónico a info@healthyval.es"
 		>
 			<svg
@@ -125,24 +135,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 				/>
 			</svg>
 
-			<span>
+			<span class="cbc-chatbot__texto-correo">
 				info@healthyval.es
 			</span>
 		</a>
-
 	</div>
 
 	<div class="cbc-chatbot__separador-contacto">
-		<span class="cbc-chatbot__texto-redes">
+		<span
+			id="cbc-chatbot-texto-redes"
+			class="cbc-chatbot__texto-redes"
+		>
 			Síguenos en redes sociales
 		</span>
 	</div>
 
-	<div
+	<nav
 		class="cbc-chatbot__redes-sociales"
-		aria-label="Redes sociales de HealthyVal"
+		aria-labelledby="cbc-chatbot-texto-redes"
 	>
-
 		<a
 			class="cbc-chatbot__red-social"
 			href="https://www.instagram.com/healthyval.clinica/"
@@ -322,8 +333,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				YouTube
 			</span>
 		</a>
-
-	</div>
+	</nav>
 
 	<button
 		type="button"

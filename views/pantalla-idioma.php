@@ -1,6 +1,8 @@
 <?php
 /**
  * Pantalla de selección del idioma.
+ *
+ * @package ChatbotClinica
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

@@ -1,6 +1,8 @@
 <?php
 /**
  * Pantalla de Pedir cita.
+ *
+ * @package ChatbotClinica
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

@@ -1,6 +1,8 @@
 <?php
 /**
  * Pantallas relacionadas con el nombre del usuario.
+ *
+ * @package ChatbotClinica
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

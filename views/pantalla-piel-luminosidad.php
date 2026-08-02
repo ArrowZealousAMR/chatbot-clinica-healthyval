@@ -1,6 +1,8 @@
 <?php
 /**
  * Pantalla de Piel y luminosidad.
+ *
+ * @package ChatbotClinica
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

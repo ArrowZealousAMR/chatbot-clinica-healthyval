@@ -1,6 +1,8 @@
 <?php
 /**
  * Pantalla de Tratamientos corporales.
+ *
+ * @package ChatbotClinica
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

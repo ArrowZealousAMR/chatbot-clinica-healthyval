@@ -1,6 +1,8 @@
 <?php
 /**
  * Pantalla de Láser de plasma.
+ *
+ * @package ChatbotClinica
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

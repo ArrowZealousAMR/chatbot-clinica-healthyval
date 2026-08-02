@@ -1,6 +1,8 @@
 <?php
 /**
  * Pantalla de horarios de HealthyVal.
+ *
+ * @package ChatbotClinica
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

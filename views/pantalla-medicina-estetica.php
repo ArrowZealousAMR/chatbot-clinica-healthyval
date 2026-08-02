@@ -1,6 +1,8 @@
 <?php
 /**
  * Pantalla de Medicina estética.
+ *
+ * @package ChatbotClinica
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

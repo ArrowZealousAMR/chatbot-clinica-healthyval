@@ -1,13 +1,15 @@
 <?php
 /**
  * Estructura principal del asistente HealthyVal.
+ *
+ * @package ChatbotClinica
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$ruta_views = plugin_dir_path( dirname( __FILE__ ) ) . 'views/';
+$ruta_views = plugin_dir_path( __DIR__ ) . 'views/';
 ?>
 
 <div class="cbc-chatbot">

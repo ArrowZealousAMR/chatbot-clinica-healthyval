@@ -1,6 +1,8 @@
 <?php
 /**
  * Pantalla de Salud y bienestar.
+ *
+ * @package ChatbotClinica
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

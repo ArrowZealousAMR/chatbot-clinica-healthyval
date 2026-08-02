@@ -1,6 +1,8 @@
 <?php
 /**
  * Pantalla de ubicación de HealthyVal.
+ *
+ * @package ChatbotClinica
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

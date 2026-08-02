@@ -1,6 +1,8 @@
 <?php
 /**
  * Pantalla de precios de HealthyVal.
+ *
+ * @package ChatbotClinica
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

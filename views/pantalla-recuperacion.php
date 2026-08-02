@@ -1,6 +1,8 @@
 <?php
 /**
  * Pantalla de Recuperación y movimiento.
+ *
+ * @package ChatbotClinica
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

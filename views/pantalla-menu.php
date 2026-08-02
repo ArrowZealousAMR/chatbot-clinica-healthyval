@@ -1,6 +1,8 @@
 <?php
 /**
  * Menú principal del chatbot.
+ *
+ * @package ChatbotClinica
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

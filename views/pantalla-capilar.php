@@ -1,6 +1,8 @@
 <?php
 /**
  * Pantalla de Medicina capilar.
+ *
+ * @package ChatbotClinica
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

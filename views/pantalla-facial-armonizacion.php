@@ -1,6 +1,8 @@
 <?php
 /**
  * Pantalla de Facial y armonización.
+ *
+ * @package ChatbotClinica
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

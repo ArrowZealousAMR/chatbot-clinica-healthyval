@@ -1,6 +1,8 @@
 <?php
 /**
  * Pantalla de contacto y redes sociales de HealthyVal.
+ *
+ * @package ChatbotClinica
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

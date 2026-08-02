@@ -23,17 +23,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 		Consulta nuestro horario de atención.
 	</p>
 
-	<div class="cbc-chatbot__informacion cbc-chatbot__informacion--horarios">
+	<div
+		class="cbc-chatbot__informacion cbc-chatbot__informacion--horarios"
+	>
 
-		<div class="cbc-chatbot__fila-horario">
+		<div class="cbc-chatbot__cabecera-horarios">
 
 			<div
 				class="cbc-chatbot__icono-horario"
 				aria-hidden="true"
 			>
 				<svg
-					width="22"
-					height="22"
+					width="24"
+					height="24"
 					viewBox="0 0 24 24"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
@@ -46,6 +48,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						stroke="currentColor"
 						stroke-width="1.6"
 					/>
+
 					<path
 						d="M12 7.5V12L15 14"
 						stroke="currentColor"
@@ -56,75 +59,86 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</svg>
 			</div>
 
-			<div class="cbc-chatbot__detalle-horario">
-
-				<span class="cbc-chatbot__dia-horario">
-					Lunes a viernes
-				</span>
-
-				<span class="cbc-chatbot__horario-semana">
-					De 10:00 a 20:00
-				</span>
-
-			</div>
+			<span class="cbc-chatbot__titulo-tabla-horarios">
+				Horario semanal
+			</span>
 
 		</div>
 
-		<div class="cbc-chatbot__separador-horario"></div>
+		<div class="cbc-chatbot__lista-horarios">
 
-		<div class="cbc-chatbot__fila-horario">
+			<div class="cbc-chatbot__fila-horario">
+				<span class="cbc-chatbot__dia-lunes">
+					Lunes
+				</span>
 
-			<div
-				class="cbc-chatbot__icono-horario"
-				aria-hidden="true"
-			>
-				<svg
-					width="22"
-					height="22"
-					viewBox="0 0 24 24"
-					fill="none"
-					xmlns="http://www.w3.org/2000/svg"
-					focusable="false"
-				>
-					<rect
-						x="4"
-						y="5.5"
-						width="16"
-						height="14"
-						rx="2.5"
-						stroke="currentColor"
-						stroke-width="1.6"
-					/>
-					<path
-						d="M8 3.5V7.5"
-						stroke="currentColor"
-						stroke-width="1.6"
-						stroke-linecap="round"
-					/>
-					<path
-						d="M16 3.5V7.5"
-						stroke="currentColor"
-						stroke-width="1.6"
-						stroke-linecap="round"
-					/>
-					<path
-						d="M4 9H20"
-						stroke="currentColor"
-						stroke-width="1.6"
-					/>
-				</svg>
+				<span class="cbc-chatbot__horario-lunes">
+					10:00–20:30
+				</span>
 			</div>
 
-			<div class="cbc-chatbot__detalle-horario">
-
-				<span class="cbc-chatbot__dia-fin-semana">
-					Sábados y domingos
+			<div class="cbc-chatbot__fila-horario">
+				<span class="cbc-chatbot__dia-martes">
+					Martes
 				</span>
 
-				<span class="cbc-chatbot__horario-sabado">
+				<span class="cbc-chatbot__horario-martes">
+					10:00–20:00
+				</span>
+			</div>
+
+			<div class="cbc-chatbot__fila-horario">
+				<span class="cbc-chatbot__dia-miercoles">
+					Miércoles
+				</span>
+
+				<span class="cbc-chatbot__horario-miercoles">
+					10:00–20:30
+				</span>
+			</div>
+
+			<div class="cbc-chatbot__fila-horario">
+				<span class="cbc-chatbot__dia-jueves">
+					Jueves
+				</span>
+
+				<span class="cbc-chatbot__horario-jueves">
+					10:00–20:00
+				</span>
+			</div>
+
+			<div class="cbc-chatbot__fila-horario">
+				<span class="cbc-chatbot__dia-viernes">
+					Viernes
+				</span>
+
+				<span class="cbc-chatbot__horario-viernes">
+					10:00–20:00
+				</span>
+			</div>
+
+			<div class="cbc-chatbot__fila-horario">
+				<span class="cbc-chatbot__dia-sabado">
+					Sábado
+				</span>
+
+				<span
+					class="cbc-chatbot__horario-sabado cbc-chatbot__horario-cerrado"
+				>
 					Cerrado
 				</span>
+			</div>
 
+			<div class="cbc-chatbot__fila-horario">
+				<span class="cbc-chatbot__dia-domingo">
+					Domingo
+				</span>
+
+				<span
+					class="cbc-chatbot__horario-domingo cbc-chatbot__horario-cerrado"
+				>
+					Cerrado
+				</span>
 			</div>
 
 		</div>
@@ -156,29 +170,34 @@ if ( ! defined( 'ABSPATH' ) ) {
 					stroke="currentColor"
 					stroke-width="1.6"
 				/>
+
 				<path
 					d="M8 3.5V7.5"
 					stroke="currentColor"
 					stroke-width="1.6"
 					stroke-linecap="round"
 				/>
+
 				<path
 					d="M16 3.5V7.5"
 					stroke="currentColor"
 					stroke-width="1.6"
 					stroke-linecap="round"
 				/>
+
 				<path
 					d="M4 9H20"
 					stroke="currentColor"
 					stroke-width="1.6"
 				/>
+
 				<path
 					d="M12 12V17"
 					stroke="currentColor"
 					stroke-width="1.6"
 					stroke-linecap="round"
 				/>
+
 				<path
 					d="M9.5 14.5H14.5"
 					stroke="currentColor"
@@ -245,6 +264,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					stroke-linecap="round"
 					stroke-linejoin="round"
 				/>
+
 				<path
 					d="M9 8.2C9.3 7.9 9.7 8 9.9 8.4L10.8 10.4C11 10.7 10.9 11 10.7 11.3L10 12C10.8 13.5 12 14.7 13.5 15.4L14.2 14.7C14.5 14.4 14.8 14.4 15.1 14.5L17.1 15.5C17.5 15.7 17.6 16.1 17.3 16.4C16.6 17.3 15.6 17.7 14.6 17.4C11.1 16.5 8.4 13.8 7.5 10.3C7.2 9.4 7.6 8.8 9 8.2Z"
 					stroke="currentColor"

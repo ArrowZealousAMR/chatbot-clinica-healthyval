@@ -2,7 +2,8 @@ window.CBCChatbot = window.CBCChatbot || {};
 
 window.CBCChatbot.translations = {
 	/**
-	 * Localiza los elementos cuyo contenido cambia según el idioma.
+	 * Localiza todos los elementos cuyo contenido
+	 * puede cambiar según el idioma seleccionado.
 	 */
 	obtenerElementos: function () {
 		return {
@@ -42,34 +43,138 @@ window.CBCChatbot.translations = {
 				'.cbc-chatbot__pregunta-menu'
 			),
 
+			/*
+			 * Horarios.
+			 */
 			tituloHorarios: document.querySelector(
 				'.cbc-chatbot__titulo-horarios'
 			),
 
-			horarioSemana: document.querySelector(
-				'.cbc-chatbot__horario-semana'
+			textoHorarios: document.querySelector(
+				'.cbc-chatbot__texto-horarios'
 			),
 
-			horarioFinSemana: document.querySelector(
+			tituloTablaHorarios: document.querySelector(
+				'.cbc-chatbot__titulo-tabla-horarios'
+			),
+
+			diaLunes: document.querySelector(
+				'.cbc-chatbot__dia-lunes'
+			),
+
+			horarioLunes: document.querySelector(
+				'.cbc-chatbot__horario-lunes'
+			),
+
+			diaMartes: document.querySelector(
+				'.cbc-chatbot__dia-martes'
+			),
+
+			horarioMartes: document.querySelector(
+				'.cbc-chatbot__horario-martes'
+			),
+
+			diaMiercoles: document.querySelector(
+				'.cbc-chatbot__dia-miercoles'
+			),
+
+			horarioMiercoles: document.querySelector(
+				'.cbc-chatbot__horario-miercoles'
+			),
+
+			diaJueves: document.querySelector(
+				'.cbc-chatbot__dia-jueves'
+			),
+
+			horarioJueves: document.querySelector(
+				'.cbc-chatbot__horario-jueves'
+			),
+
+			diaViernes: document.querySelector(
+				'.cbc-chatbot__dia-viernes'
+			),
+
+			horarioViernes: document.querySelector(
+				'.cbc-chatbot__horario-viernes'
+			),
+
+			diaSabado: document.querySelector(
+				'.cbc-chatbot__dia-sabado'
+			),
+
+			horarioSabado: document.querySelector(
 				'.cbc-chatbot__horario-sabado'
 			),
 
+			diaDomingo: document.querySelector(
+				'.cbc-chatbot__dia-domingo'
+			),
+
+			horarioDomingo: document.querySelector(
+				'.cbc-chatbot__horario-domingo'
+			),
+
+			textoCitaHorarios: document.querySelector(
+				'.cbc-chatbot__texto-cita-horarios'
+			),
+
+			textoLlamarHorarios: document.querySelector(
+				'.cbc-chatbot__texto-llamar-horarios'
+			),
+
+			textoWhatsappHorarios: document.querySelector(
+				'.cbc-chatbot__texto-whatsapp-horarios'
+			),
+
+			/*
+			 * Ubicación.
+			 */
 			tituloUbicacion: document.querySelector(
 				'.cbc-chatbot__titulo-ubicacion'
 			),
 
-			textoMapa: document.querySelector(
-				'.cbc-chatbot__texto-mapa'
+			textoUbicacion: document.querySelector(
+				'.cbc-chatbot__texto-ubicacion'
+			),
+
+			textoGoogleMaps: document.querySelector(
+				'.cbc-chatbot__texto-google-maps'
+			),
+
+			textoAppleMaps: document.querySelector(
+				'.cbc-chatbot__texto-apple-maps'
 			),
 
 			textoLlamar: document.querySelector(
 				'.cbc-chatbot__texto-llamar'
 			),
 
+			textoWhatsappUbicacion: document.querySelector(
+				'.cbc-chatbot__texto-whatsapp-ubicacion'
+			),
+
+			/*
+			 * Contacto.
+			 */
 			tituloContacto: document.querySelector(
 				'.cbc-chatbot__titulo-contacto'
 			),
 
+			textoContacto: document.querySelector(
+				'.cbc-chatbot__texto-contacto'
+			),
+
+			textoWhatsapp: document.querySelector(
+				'.cbc-chatbot__texto-whatsapp'
+			),
+
+			textoRedes: document.querySelector(
+				'.cbc-chatbot__texto-redes'
+			),
+
+			/*
+			 * Medicina estética.
+			 */
 			tituloMedicinaEstetica: document.querySelector(
 				'.cbc-chatbot__titulo-medicina-estetica'
 			),
@@ -86,6 +191,9 @@ window.CBCChatbot.translations = {
 				'.cbc-chatbot__boton-cita-estetica'
 			),
 
+			/*
+			 * Recuperación y movimiento.
+			 */
 			tituloRecuperacion: document.querySelector(
 				'.cbc-chatbot__titulo-recuperacion'
 			),
@@ -102,6 +210,9 @@ window.CBCChatbot.translations = {
 				'.cbc-chatbot__boton-cita-recuperacion'
 			),
 
+			/*
+			 * Salud y bienestar.
+			 */
 			tituloSalud: document.querySelector(
 				'.cbc-chatbot__titulo-salud'
 			),
@@ -118,6 +229,37 @@ window.CBCChatbot.translations = {
 				'.cbc-chatbot__boton-cita-salud'
 			),
 
+			/*
+			 * Precios.
+			 */
+			tituloPrecios: document.querySelector(
+				'.cbc-chatbot__titulo-precios'
+			),
+
+			textoPrecios: document.querySelector(
+				'.cbc-chatbot__texto-precios'
+			),
+
+			descripcionPrecios: document.querySelector(
+				'.cbc-chatbot__descripcion-precios'
+			),
+
+			notaPrecios: document.querySelector(
+				'.cbc-chatbot__nota-precios'
+			),
+
+			textoValoracionPrecios: document.querySelector(
+				'.cbc-chatbot__texto-valoracion-precios'
+			),
+
+			textoWhatsappPrecios: document.querySelector(
+				'.cbc-chatbot__texto-whatsapp-precios'
+			),
+
+			textoLlamarPrecios: document.querySelector(
+				'.cbc-chatbot__texto-llamar-precios'
+			),
+
 			botonesVolver: document.querySelectorAll(
 				'[data-volver]'
 			)
@@ -125,7 +267,7 @@ window.CBCChatbot.translations = {
 	},
 
 	/**
-	 * Cambia el texto de un botón del menú principal.
+	 * Cambia el texto de una opción del menú principal.
 	 */
 	actualizarTextoBotonMenu: function (valor, texto) {
 		const boton = document.querySelector(
@@ -138,9 +280,25 @@ window.CBCChatbot.translations = {
 	},
 
 	/**
-	 * Mantiene el logotipo de la cabecera.
-	 *
-	 * El nombre HealthyVal no se traduce.
+	 * Cambia los textos de una colección de botones
+	 * utilizando uno de sus atributos data.
+	 */
+	actualizarBotonesPorDatos: function (
+		botones,
+		nombreDato,
+		traducciones
+	) {
+		botones.forEach(function (boton) {
+			const clave = boton.dataset[nombreDato];
+
+			if (traducciones[clave]) {
+				boton.textContent = traducciones[clave];
+			}
+		});
+	},
+
+	/**
+	 * Mantiene el nombre corporativo de la cabecera.
 	 */
 	traducirTituloChatbot: function () {
 		const elementos = this.obtenerElementos();
@@ -160,13 +318,13 @@ window.CBCChatbot.translations = {
 		const idioma = window.CBCChatbot.state.idiomaActual;
 		const elementos = this.obtenerElementos();
 
-		let texto = '← Volver';
+		const textos = {
+			va: '← Enrere',
+			es: '← Volver',
+			en: '← Back'
+		};
 
-		if (idioma === 'va') {
-			texto = '← Enrere';
-		} else if (idioma === 'en') {
-			texto = '← Back';
-		}
+		const texto = textos[idioma] || textos.es;
 
 		elementos.botonesVolver.forEach(function (boton) {
 			boton.textContent = texto;
@@ -174,7 +332,7 @@ window.CBCChatbot.translations = {
 	},
 
 	/**
-	 * Traduce la pantalla donde se pregunta por el nombre.
+	 * Traduce la pantalla donde se pregunta el nombre.
 	 */
 	traducirPantallaNombre: function () {
 		const idioma = window.CBCChatbot.state.idiomaActual;
@@ -188,38 +346,40 @@ window.CBCChatbot.translations = {
 			return;
 		}
 
-		if (idioma === 'va') {
-			elementos.preguntaNombre.textContent =
-				'Com et dius?';
+		const textos = {
+			va: {
+				pregunta: 'Com et dius?',
+				escribir: 'Escriure el meu nom',
+				continuar: 'Continuar sense nom'
+			},
 
-			elementos.botonEscribirNombre.textContent =
-				'Escriure el meu nom';
+			es: {
+				pregunta: '¿Cómo te llamas?',
+				escribir: 'Escribir mi nombre',
+				continuar: 'Continuar sin nombre'
+			},
 
-			elementos.botonSinNombre.textContent =
-				'Continuar sense nom';
-		} else if (idioma === 'en') {
-			elementos.preguntaNombre.textContent =
-				'What is your name?';
+			en: {
+				pregunta: 'What is your name?',
+				escribir: 'Enter my name',
+				continuar: 'Continue without a name'
+			}
+		};
 
-			elementos.botonEscribirNombre.textContent =
-				'Enter my name';
+		const traduccion = textos[idioma] || textos.es;
 
-			elementos.botonSinNombre.textContent =
-				'Continue without a name';
-		} else {
-			elementos.preguntaNombre.textContent =
-				'¿Cómo te llamas?';
+		elementos.preguntaNombre.textContent =
+			traduccion.pregunta;
 
-			elementos.botonEscribirNombre.textContent =
-				'Escribir mi nombre';
+		elementos.botonEscribirNombre.textContent =
+			traduccion.escribir;
 
-			elementos.botonSinNombre.textContent =
-				'Continuar sin nombre';
-		}
+		elementos.botonSinNombre.textContent =
+			traduccion.continuar;
 	},
 
 	/**
-	 * Traduce el formulario donde se escribe el nombre.
+	 * Traduce el formulario del nombre.
 	 */
 	traducirFormularioNombre: function () {
 		const idioma = window.CBCChatbot.state.idiomaActual;
@@ -233,34 +393,36 @@ window.CBCChatbot.translations = {
 			return;
 		}
 
-		if (idioma === 'va') {
-			elementos.etiquetaNombre.textContent =
-				'Escriu el teu nom';
+		const textos = {
+			va: {
+				etiqueta: 'Escriu el teu nom',
+				placeholder: 'El teu nom',
+				continuar: 'Continuar'
+			},
 
-			elementos.campoNombre.placeholder =
-				'El teu nom';
+			es: {
+				etiqueta: 'Escribe tu nombre',
+				placeholder: 'Tu nombre',
+				continuar: 'Continuar'
+			},
 
-			elementos.botonGuardarNombre.textContent =
-				'Continuar';
-		} else if (idioma === 'en') {
-			elementos.etiquetaNombre.textContent =
-				'Enter your name';
+			en: {
+				etiqueta: 'Enter your name',
+				placeholder: 'Your name',
+				continuar: 'Continue'
+			}
+		};
 
-			elementos.campoNombre.placeholder =
-				'Your name';
+		const traduccion = textos[idioma] || textos.es;
 
-			elementos.botonGuardarNombre.textContent =
-				'Continue';
-		} else {
-			elementos.etiquetaNombre.textContent =
-				'Escribe tu nombre';
+		elementos.etiquetaNombre.textContent =
+			traduccion.etiqueta;
 
-			elementos.campoNombre.placeholder =
-				'Tu nombre';
+		elementos.campoNombre.placeholder =
+			traduccion.placeholder;
 
-			elementos.botonGuardarNombre.textContent =
-				'Continuar';
-		}
+		elementos.botonGuardarNombre.textContent =
+			traduccion.continuar;
 	},
 
 	/**
@@ -275,148 +437,128 @@ window.CBCChatbot.translations = {
 			return;
 		}
 
-		if (idioma === 'va') {
-			elementos.saludoMenu.textContent = nombre
-				? 'Hola, ' + nombre + '.'
-				: 'Hola.';
+		const textos = {
+			va: {
+				saludo: nombre
+					? 'Hola, ' + nombre + '.'
+					: 'Hola.',
 
-			elementos.preguntaMenu.textContent =
-				'En què podem ajudar-te?';
+				pregunta: 'En què podem ajudar-te?',
 
-			this.actualizarTextoBotonMenu(
-				'medicina-estetica',
-				'Medicina estètica'
-			);
+				opciones: {
+					'medicina-estetica':
+						'Medicina estètica',
 
-			this.actualizarTextoBotonMenu(
-				'recuperacion-movimiento',
-				'Recuperació i moviment'
-			);
+					'recuperacion-movimiento':
+						'Recuperació i moviment',
 
-			this.actualizarTextoBotonMenu(
-				'salud-bienestar',
-				'Salut i benestar'
-			);
+					'salud-bienestar':
+						'Salut i benestar',
 
-			this.actualizarTextoBotonMenu(
-				'precios',
-				'Preus'
-			);
+					precios:
+						'Preus',
 
-			this.actualizarTextoBotonMenu(
-				'cita',
-				'Demanar cita'
-			);
+					cita:
+						'Demanar cita',
 
-			this.actualizarTextoBotonMenu(
-				'horarios',
-				'Horaris'
-			);
+					horarios:
+						'Horaris',
 
-			this.actualizarTextoBotonMenu(
-				'ubicacion',
-				'On estem'
-			);
+					ubicacion:
+						'On estem',
 
-			this.actualizarTextoBotonMenu(
-				'contacto',
-				'Contactar amb HealthyVal'
-			);
-		} else if (idioma === 'en') {
-			elementos.saludoMenu.textContent = nombre
-				? 'Hello, ' + nombre + '.'
-				: 'Hello.';
+					contacto:
+						'Contactar amb HealthyVal'
+				}
+			},
 
-			elementos.preguntaMenu.textContent =
-				'How can we help you?';
+			es: {
+				saludo: nombre
+					? 'Hola, ' + nombre + '.'
+					: 'Hola.',
 
-			this.actualizarTextoBotonMenu(
-				'medicina-estetica',
-				'Aesthetic medicine'
-			);
+				pregunta: '¿En qué podemos ayudarte?',
 
-			this.actualizarTextoBotonMenu(
-				'recuperacion-movimiento',
-				'Recovery and movement'
-			);
+				opciones: {
+					'medicina-estetica':
+						'Medicina estética',
 
-			this.actualizarTextoBotonMenu(
-				'salud-bienestar',
-				'Health and wellness'
-			);
+					'recuperacion-movimiento':
+						'Recuperación y movimiento',
 
-			this.actualizarTextoBotonMenu(
-				'precios',
-				'Prices'
-			);
+					'salud-bienestar':
+						'Salud y bienestar',
 
-			this.actualizarTextoBotonMenu(
-				'cita',
-				'Book an appointment'
-			);
+					precios:
+						'Precios',
 
-			this.actualizarTextoBotonMenu(
-				'horarios',
-				'Opening hours'
-			);
+					cita:
+						'Pedir cita',
 
-			this.actualizarTextoBotonMenu(
-				'ubicacion',
-				'Find us'
-			);
+					horarios:
+						'Horarios',
 
-			this.actualizarTextoBotonMenu(
-				'contacto',
-				'Contact HealthyVal'
-			);
-		} else {
-			elementos.saludoMenu.textContent = nombre
-				? 'Hola, ' + nombre + '.'
-				: 'Hola.';
+					ubicacion:
+						'Dónde estamos',
 
-			elementos.preguntaMenu.textContent =
-				'¿En qué podemos ayudarte?';
+					contacto:
+						'Contactar con HealthyVal'
+				}
+			},
 
-			this.actualizarTextoBotonMenu(
-				'medicina-estetica',
-				'Medicina estética'
-			);
+			en: {
+				saludo: nombre
+					? 'Hello, ' + nombre + '.'
+					: 'Hello.',
 
-			this.actualizarTextoBotonMenu(
-				'recuperacion-movimiento',
-				'Recuperación y movimiento'
-			);
+				pregunta: 'How can we help you?',
 
-			this.actualizarTextoBotonMenu(
-				'salud-bienestar',
-				'Salud y bienestar'
-			);
+				opciones: {
+					'medicina-estetica':
+						'Aesthetic medicine',
 
-			this.actualizarTextoBotonMenu(
-				'precios',
-				'Precios'
-			);
+					'recuperacion-movimiento':
+						'Recovery and movement',
 
-			this.actualizarTextoBotonMenu(
-				'cita',
-				'Pedir cita'
-			);
+					'salud-bienestar':
+						'Health and wellness',
 
-			this.actualizarTextoBotonMenu(
-				'horarios',
-				'Horarios'
-			);
+					precios:
+						'Prices',
 
-			this.actualizarTextoBotonMenu(
-				'ubicacion',
-				'Dónde estamos'
-			);
+					cita:
+						'Book an appointment',
 
-			this.actualizarTextoBotonMenu(
-				'contacto',
-				'Contactar con HealthyVal'
-			);
-		}
+					horarios:
+						'Opening hours',
+
+					ubicacion:
+						'Find us',
+
+					contacto:
+						'Contact HealthyVal'
+				}
+			}
+		};
+
+		const traduccion = textos[idioma] || textos.es;
+
+		elementos.saludoMenu.textContent =
+			traduccion.saludo;
+
+		elementos.preguntaMenu.textContent =
+			traduccion.pregunta;
+
+		const translations = this;
+
+		Object.keys(traduccion.opciones).forEach(
+			function (clave) {
+				translations.actualizarTextoBotonMenu(
+					clave,
+					traduccion.opciones[clave]
+				);
+			}
+		);
 	},
 
 	/**
@@ -428,40 +570,170 @@ window.CBCChatbot.translations = {
 
 		if (
 			!elementos.tituloHorarios ||
-			!elementos.horarioSemana ||
-			!elementos.horarioFinSemana
+			!elementos.textoHorarios ||
+			!elementos.tituloTablaHorarios ||
+			!elementos.diaLunes ||
+			!elementos.horarioLunes ||
+			!elementos.diaMartes ||
+			!elementos.horarioMartes ||
+			!elementos.diaMiercoles ||
+			!elementos.horarioMiercoles ||
+			!elementos.diaJueves ||
+			!elementos.horarioJueves ||
+			!elementos.diaViernes ||
+			!elementos.horarioViernes ||
+			!elementos.diaSabado ||
+			!elementos.horarioSabado ||
+			!elementos.diaDomingo ||
+			!elementos.horarioDomingo ||
+			!elementos.textoCitaHorarios ||
+			!elementos.textoLlamarHorarios ||
+			!elementos.textoWhatsappHorarios
 		) {
 			return;
 		}
 
-		if (idioma === 'va') {
-			elementos.tituloHorarios.textContent =
-				'Horaris';
+		const textos = {
+			va: {
+				titulo: 'Horaris',
+				introduccion:
+					'Consulta el nostre horari d’atenció.',
+				tituloTabla: 'Horari setmanal',
 
-			elementos.horarioSemana.textContent =
-				'De dilluns a divendres: de 10.00 a 20.00 h.';
+				lunes: 'Dilluns',
+				martes: 'Dimarts',
+				miercoles: 'Dimecres',
+				jueves: 'Dijous',
+				viernes: 'Divendres',
+				sabado: 'Dissabte',
+				domingo: 'Diumenge',
 
-			elementos.horarioFinSemana.textContent =
-				'Dissabtes i diumenges: tancat.';
-		} else if (idioma === 'en') {
-			elementos.tituloHorarios.textContent =
-				'Opening hours';
+				horarioLunes: '10.00–20.30',
+				horarioMartes: '10.00–20.00',
+				horarioMiercoles: '10.00–20.30',
+				horarioJueves: '10.00–20.00',
+				horarioViernes: '10.00–20.00',
+				cerrado: 'Tancat',
 
-			elementos.horarioSemana.textContent =
-				'Monday to Friday: 10:00 a.m. to 8:00 p.m.';
+				cita: 'Demanar cita',
+				llamar: 'Telefonar',
+				whatsapp: 'WhatsApp'
+			},
 
-			elementos.horarioFinSemana.textContent =
-				'Saturday and Sunday: closed.';
-		} else {
-			elementos.tituloHorarios.textContent =
-				'Horarios';
+			es: {
+				titulo: 'Horarios',
+				introduccion:
+					'Consulta nuestro horario de atención.',
+				tituloTabla: 'Horario semanal',
 
-			elementos.horarioSemana.textContent =
-				'Lunes a viernes: de 10:00 a 20:00.';
+				lunes: 'Lunes',
+				martes: 'Martes',
+				miercoles: 'Miércoles',
+				jueves: 'Jueves',
+				viernes: 'Viernes',
+				sabado: 'Sábado',
+				domingo: 'Domingo',
 
-			elementos.horarioFinSemana.textContent =
-				'Sábados y domingos: cerrado.';
-		}
+				horarioLunes: '10:00–20:30',
+				horarioMartes: '10:00–20:00',
+				horarioMiercoles: '10:00–20:30',
+				horarioJueves: '10:00–20:00',
+				horarioViernes: '10:00–20:00',
+				cerrado: 'Cerrado',
+
+				cita: 'Pedir cita',
+				llamar: 'Llamar',
+				whatsapp: 'WhatsApp'
+			},
+
+			en: {
+				titulo: 'Opening hours',
+				introduccion:
+					'Check our opening hours.',
+				tituloTabla: 'Weekly opening hours',
+
+				lunes: 'Monday',
+				martes: 'Tuesday',
+				miercoles: 'Wednesday',
+				jueves: 'Thursday',
+				viernes: 'Friday',
+				sabado: 'Saturday',
+				domingo: 'Sunday',
+
+				horarioLunes: '10:00 a.m.–8:30 p.m.',
+				horarioMartes: '10:00 a.m.–8:00 p.m.',
+				horarioMiercoles: '10:00 a.m.–8:30 p.m.',
+				horarioJueves: '10:00 a.m.–8:00 p.m.',
+				horarioViernes: '10:00 a.m.–8:00 p.m.',
+				cerrado: 'Closed',
+
+				cita: 'Book an appointment',
+				llamar: 'Call us',
+				whatsapp: 'WhatsApp'
+			}
+		};
+
+		const traduccion = textos[idioma] || textos.es;
+
+		elementos.tituloHorarios.textContent =
+			traduccion.titulo;
+
+		elementos.textoHorarios.textContent =
+			traduccion.introduccion;
+
+		elementos.tituloTablaHorarios.textContent =
+			traduccion.tituloTabla;
+
+		elementos.diaLunes.textContent =
+			traduccion.lunes;
+
+		elementos.horarioLunes.textContent =
+			traduccion.horarioLunes;
+
+		elementos.diaMartes.textContent =
+			traduccion.martes;
+
+		elementos.horarioMartes.textContent =
+			traduccion.horarioMartes;
+
+		elementos.diaMiercoles.textContent =
+			traduccion.miercoles;
+
+		elementos.horarioMiercoles.textContent =
+			traduccion.horarioMiercoles;
+
+		elementos.diaJueves.textContent =
+			traduccion.jueves;
+
+		elementos.horarioJueves.textContent =
+			traduccion.horarioJueves;
+
+		elementos.diaViernes.textContent =
+			traduccion.viernes;
+
+		elementos.horarioViernes.textContent =
+			traduccion.horarioViernes;
+
+		elementos.diaSabado.textContent =
+			traduccion.sabado;
+
+		elementos.horarioSabado.textContent =
+			traduccion.cerrado;
+
+		elementos.diaDomingo.textContent =
+			traduccion.domingo;
+
+		elementos.horarioDomingo.textContent =
+			traduccion.cerrado;
+
+		elementos.textoCitaHorarios.textContent =
+			traduccion.cita;
+
+		elementos.textoLlamarHorarios.textContent =
+			traduccion.llamar;
+
+		elementos.textoWhatsappHorarios.textContent =
+			traduccion.whatsapp;
 	},
 
 	/**
@@ -473,85 +745,162 @@ window.CBCChatbot.translations = {
 
 		if (
 			!elementos.tituloUbicacion ||
-			!elementos.textoMapa ||
-			!elementos.textoLlamar
+			!elementos.textoUbicacion ||
+			!elementos.textoGoogleMaps ||
+			!elementos.textoAppleMaps ||
+			!elementos.textoLlamar ||
+			!elementos.textoWhatsappUbicacion
 		) {
 			return;
 		}
 
-		if (idioma === 'va') {
-			elementos.tituloUbicacion.textContent =
-				'On estem';
+		const textos = {
+			va: {
+				titulo: 'On estem',
 
-			elementos.textoMapa.textContent =
-				'Obrir en Google Maps';
+				introduccion:
+					'Ens trobaràs al barri de l’Eixample, a València.',
 
-			elementos.textoLlamar.textContent =
-				'Telefonar';
-		} else if (idioma === 'en') {
-			elementos.tituloUbicacion.textContent =
-				'Find us';
+				googleMaps: 'Google Maps',
+				appleMaps: 'Apple Maps',
+				llamar: 'Telefonar',
+				whatsapp: 'WhatsApp'
+			},
 
-			elementos.textoMapa.textContent =
-				'Open in Google Maps';
+			es: {
+				titulo: 'Dónde estamos',
 
-			elementos.textoLlamar.textContent =
-				'Call us';
-		} else {
-			elementos.tituloUbicacion.textContent =
-				'Dónde estamos';
+				introduccion:
+					'Encuéntranos en el barrio de L’Eixample, en València.',
 
-			elementos.textoMapa.textContent =
-				'Abrir en Google Maps';
+				googleMaps: 'Google Maps',
+				appleMaps: 'Apple Maps',
+				llamar: 'Llamar',
+				whatsapp: 'WhatsApp'
+			},
 
-			elementos.textoLlamar.textContent =
-				'Llamar';
-		}
+			en: {
+				titulo: 'Find us',
+
+				introduccion:
+					'You can find us in the L’Eixample district of Valencia.',
+
+				googleMaps: 'Google Maps',
+				appleMaps: 'Apple Maps',
+				llamar: 'Call us',
+				whatsapp: 'WhatsApp'
+			}
+		};
+
+		const traduccion = textos[idioma] || textos.es;
+
+		elementos.tituloUbicacion.textContent =
+			traduccion.titulo;
+
+		elementos.textoUbicacion.textContent =
+			traduccion.introduccion;
+
+		elementos.textoGoogleMaps.textContent =
+			traduccion.googleMaps;
+
+		elementos.textoAppleMaps.textContent =
+			traduccion.appleMaps;
+
+		elementos.textoLlamar.textContent =
+			traduccion.llamar;
+
+		elementos.textoWhatsappUbicacion.textContent =
+			traduccion.whatsapp;
 	},
 
 	/**
-	 * Traduce el título de la pantalla de contacto.
+	 * Traduce la pantalla de contacto.
 	 */
 	traducirContacto: function () {
 		const idioma = window.CBCChatbot.state.idiomaActual;
 		const elementos = this.obtenerElementos();
 
-		if (!elementos.tituloContacto) {
+		if (
+			!elementos.tituloContacto ||
+			!elementos.textoContacto ||
+			!elementos.textoWhatsapp ||
+			!elementos.textoRedes
+		) {
 			return;
 		}
 
-		if (idioma === 'va') {
-			elementos.tituloContacto.textContent =
-				'Contactar amb HealthyVal';
-		} else if (idioma === 'en') {
-			elementos.tituloContacto.textContent =
-				'Contact HealthyVal';
-		} else {
-			elementos.tituloContacto.textContent =
-				'Contactar con HealthyVal';
-		}
+		const textos = {
+			va: {
+				titulo: 'Contactar amb HealthyVal',
+
+				introduccion:
+					'Tria com prefereixes contactar amb nosaltres.',
+
+				whatsapp: 'WhatsApp',
+
+				redes:
+					'Segueix-nos en xarxes socials'
+			},
+
+			es: {
+				titulo: 'Contactar con HealthyVal',
+
+				introduccion:
+					'Elige cómo prefieres contactar con nosotros.',
+
+				whatsapp: 'WhatsApp',
+
+				redes:
+					'Síguenos en redes sociales'
+			},
+
+			en: {
+				titulo: 'Contact HealthyVal',
+
+				introduccion:
+					'Choose how you would like to contact us.',
+
+				whatsapp: 'WhatsApp',
+
+				redes:
+					'Follow us on social media'
+			}
+		};
+
+		const traduccion = textos[idioma] || textos.es;
+
+		elementos.tituloContacto.textContent =
+			traduccion.titulo;
+
+		elementos.textoContacto.textContent =
+			traduccion.introduccion;
+
+		elementos.textoWhatsapp.textContent =
+			traduccion.whatsapp;
+
+		elementos.textoRedes.textContent =
+			traduccion.redes;
 	},
 
 	/**
-	 * Devuelve el mensaje de error del campo del nombre.
+	 * Devuelve el mensaje de error del nombre.
 	 */
 	obtenerErrorNombre: function () {
 		const idioma = window.CBCChatbot.state.idiomaActual;
 
-		if (idioma === 'va') {
-			return 'Escriu un nom d’almenys 2 caràcters.';
-		}
+		const textos = {
+			va: 'Escriu un nom d’almenys 2 caràcters.',
 
-		if (idioma === 'en') {
-			return 'Enter a name with at least 2 characters.';
-		}
+			es: 'Escribe un nombre de al menos 2 caracteres.',
 
-		return 'Escribe un nombre de al menos 2 caracteres.';
+			en: 'Enter a name with at least 2 characters.'
+		};
+
+		return textos[idioma] || textos.es;
 	},
 
 	/**
-	 * Traduce la pantalla y las subcategorías
-	 * de Medicina estética.
+	 * Traduce Medicina estética.
 	 */
 	traducirMedicinaEstetica: function () {
 		const idioma = window.CBCChatbot.state.idiomaActual;
@@ -571,6 +920,7 @@ window.CBCChatbot.translations = {
 				titulo: 'Medicina estètica',
 				pregunta: 'Quin tractament t’interessa?',
 				cita: 'Demanar cita',
+
 				opciones: {
 					'facial-armonizacion':
 						'Facial i harmonització',
@@ -593,6 +943,7 @@ window.CBCChatbot.translations = {
 				titulo: 'Medicina estética',
 				pregunta: '¿Qué tratamiento te interesa?',
 				cita: 'Pedir cita',
+
 				opciones: {
 					'facial-armonizacion':
 						'Facial y armonización',
@@ -613,9 +964,12 @@ window.CBCChatbot.translations = {
 
 			en: {
 				titulo: 'Aesthetic medicine',
+
 				pregunta:
 					'Which treatment are you interested in?',
+
 				cita: 'Book an appointment',
+
 				opciones: {
 					'facial-armonizacion':
 						'Facial treatments and harmonisation',
@@ -646,14 +1000,11 @@ window.CBCChatbot.translations = {
 		elementos.botonCitaEstetica.textContent =
 			traduccion.cita;
 
-		elementos.botonesEstetica.forEach(function (boton) {
-			const clave = boton.dataset.estetica;
-
-			if (traduccion.opciones[clave]) {
-				boton.textContent =
-					traduccion.opciones[clave];
-			}
-		});
+		this.actualizarBotonesPorDatos(
+			elementos.botonesEstetica,
+			'estetica',
+			traduccion.opciones
+		);
 	},
 
 	/**
@@ -677,13 +1028,20 @@ window.CBCChatbot.translations = {
 				titulo: 'Recuperació i moviment',
 				pregunta: 'En quina àrea podem ajudar-te?',
 				cita: 'Demanar cita',
+
 				opciones: {
-					fisioterapia: 'Fisioteràpia',
-					traumatologia: 'Traumatologia',
+					fisioterapia:
+						'Fisioteràpia',
+
+					traumatologia:
+						'Traumatologia',
+
 					'medicina-regenerativa':
 						'Medicina regenerativa',
+
 					'pilates-terapeutico':
 						'Pilates terapèutic',
+
 					'entrenamiento-terapeutico':
 						'Entrenament terapèutic'
 				}
@@ -693,13 +1051,20 @@ window.CBCChatbot.translations = {
 				titulo: 'Recuperación y movimiento',
 				pregunta: '¿En qué área podemos ayudarte?',
 				cita: 'Pedir cita',
+
 				opciones: {
-					fisioterapia: 'Fisioterapia',
-					traumatologia: 'Traumatología',
+					fisioterapia:
+						'Fisioterapia',
+
+					traumatologia:
+						'Traumatología',
+
 					'medicina-regenerativa':
 						'Medicina regenerativa',
+
 					'pilates-terapeutico':
 						'Pilates terapéutico',
+
 					'entrenamiento-terapeutico':
 						'Entrenamiento terapéutico'
 				}
@@ -707,15 +1072,25 @@ window.CBCChatbot.translations = {
 
 			en: {
 				titulo: 'Recovery and movement',
-				pregunta: 'Which area can we help you with?',
+
+				pregunta:
+					'Which area can we help you with?',
+
 				cita: 'Book an appointment',
+
 				opciones: {
-					fisioterapia: 'Physiotherapy',
-					traumatologia: 'Traumatology',
+					fisioterapia:
+						'Physiotherapy',
+
+					traumatologia:
+						'Traumatology',
+
 					'medicina-regenerativa':
 						'Regenerative medicine',
+
 					'pilates-terapeutico':
 						'Therapeutic Pilates',
+
 					'entrenamiento-terapeutico':
 						'Therapeutic training'
 				}
@@ -733,14 +1108,11 @@ window.CBCChatbot.translations = {
 		elementos.botonCitaRecuperacion.textContent =
 			traduccion.cita;
 
-		elementos.botonesRecuperacion.forEach(function (boton) {
-			const clave = boton.dataset.recuperacion;
-
-			if (traduccion.opciones[clave]) {
-				boton.textContent =
-					traduccion.opciones[clave];
-			}
-		});
+		this.actualizarBotonesPorDatos(
+			elementos.botonesRecuperacion,
+			'recuperacion',
+			traduccion.opciones
+		);
 	},
 
 	/**
@@ -764,12 +1136,20 @@ window.CBCChatbot.translations = {
 				titulo: 'Salut i benestar',
 				pregunta: 'En quina àrea podem ajudar-te?',
 				cita: 'Demanar cita',
+
 				opciones: {
-					podologia: 'Podologia',
-					'perdida-peso': 'Pèrdua de pes',
-					psicologia: 'Psicologia',
+					podologia:
+						'Podologia',
+
+					'perdida-peso':
+						'Pèrdua de pes',
+
+					psicologia:
+						'Psicologia',
+
 					'valoracion-integral':
 						'Valoració integral',
+
 					'prevencion-seguimiento':
 						'Prevenció i seguiment'
 				}
@@ -779,12 +1159,20 @@ window.CBCChatbot.translations = {
 				titulo: 'Salud y bienestar',
 				pregunta: '¿En qué área podemos ayudarte?',
 				cita: 'Pedir cita',
+
 				opciones: {
-					podologia: 'Podología',
-					'perdida-peso': 'Pérdida de peso',
-					psicologia: 'Psicología',
+					podologia:
+						'Podología',
+
+					'perdida-peso':
+						'Pérdida de peso',
+
+					psicologia:
+						'Psicología',
+
 					'valoracion-integral':
 						'Valoración integral',
+
 					'prevencion-seguimiento':
 						'Prevención y seguimiento'
 				}
@@ -792,14 +1180,25 @@ window.CBCChatbot.translations = {
 
 			en: {
 				titulo: 'Health and wellness',
-				pregunta: 'Which area can we help you with?',
+
+				pregunta:
+					'Which area can we help you with?',
+
 				cita: 'Book an appointment',
+
 				opciones: {
-					podologia: 'Podiatry',
-					'perdida-peso': 'Weight management',
-					psicologia: 'Psychology',
+					podologia:
+						'Podiatry',
+
+					'perdida-peso':
+						'Weight management',
+
+					psicologia:
+						'Psychology',
+
 					'valoracion-integral':
 						'Comprehensive assessment',
+
 					'prevencion-seguimiento':
 						'Prevention and follow-up'
 				}
@@ -817,92 +1216,121 @@ window.CBCChatbot.translations = {
 		elementos.botonCitaSalud.textContent =
 			traduccion.cita;
 
-		elementos.botonesSalud.forEach(function (boton) {
-			const clave = boton.dataset.salud;
-
-			if (traduccion.opciones[clave]) {
-				boton.textContent =
-					traduccion.opciones[clave];
-			}
-		});
+		this.actualizarBotonesPorDatos(
+			elementos.botonesSalud,
+			'salud',
+			traduccion.opciones
+		);
 	},
 
 	/**
-	 * Traduce las pantallas que todavía tienen
-	 * contenido provisional.
+	 * Traduce la pantalla completa de precios.
 	 */
-	traducirPantallasBasicas: function () {
+	traducirPrecios: function () {
 		const idioma = window.CBCChatbot.state.idiomaActual;
+		const elementos = this.obtenerElementos();
+
+		if (
+			!elementos.tituloPrecios ||
+			!elementos.textoPrecios ||
+			!elementos.descripcionPrecios ||
+			!elementos.notaPrecios ||
+			!elementos.textoValoracionPrecios ||
+			!elementos.textoWhatsappPrecios ||
+			!elementos.textoLlamarPrecios
+		) {
+			return;
+		}
 
 		const textos = {
-			precios: {
-				va: {
-					titulo: 'Preus',
-					mensaje:
-						'Aquesta secció estarà disponible pròximament.'
-				},
-				es: {
-					titulo: 'Precios',
-					mensaje:
-						'Esta sección estará disponible próximamente.'
-				},
-				en: {
-					titulo: 'Prices',
-					mensaje:
-						'This section will be available soon.'
-				}
+			va: {
+				titulo: 'Preus',
+
+				introduccion:
+					'Cada tractament s’adapta a les necessitats de cada persona.',
+
+				descripcion:
+					'Per oferir-te una orientació adequada, el nostre equip necessita conéixer el teu cas i el tractament que busques.',
+
+				nota:
+					'Pots sol·licitar una valoració o escriure’ns per rebre més informació.',
+
+				valoracion:
+					'Sol·licitar valoració',
+
+				whatsapp:
+					'Consultar per WhatsApp',
+
+				llamar:
+					'Telefonar'
 			},
 
-			cita: {
-				va: {
-					titulo: 'Demanar cita',
-					mensaje:
-						'Aquesta secció estarà disponible pròximament.'
-				},
-				es: {
-					titulo: 'Pedir cita',
-					mensaje:
-						'Esta sección estará disponible próximamente.'
-				},
-				en: {
-					titulo: 'Book an appointment',
-					mensaje:
-						'This section will be available soon.'
-				}
+			es: {
+				titulo: 'Precios',
+
+				introduccion:
+					'Cada tratamiento se adapta a las necesidades de cada persona.',
+
+				descripcion:
+					'Para ofrecerte una orientación adecuada, nuestro equipo necesita conocer tu caso y el tratamiento que buscas.',
+
+				nota:
+					'Puedes solicitar una valoración o escribirnos para recibir más información.',
+
+				valoracion:
+					'Solicitar valoración',
+
+				whatsapp:
+					'Consultar por WhatsApp',
+
+				llamar:
+					'Llamar'
+			},
+
+			en: {
+				titulo: 'Prices',
+
+				introduccion:
+					'Each treatment is tailored to the needs of each person.',
+
+				descripcion:
+					'To provide appropriate guidance, our team needs to understand your case and the treatment you are looking for.',
+
+				nota:
+					'You can request an assessment or contact us for more information.',
+
+				valoracion:
+					'Request an assessment',
+
+				whatsapp:
+					'Ask via WhatsApp',
+
+				llamar:
+					'Call us'
 			}
 		};
 
-		Object.keys(textos).forEach(function (nombrePantalla) {
-			const pantalla = document.querySelector(
-				'[data-pantalla="' + nombrePantalla + '"]'
-			);
+		const traduccion = textos[idioma] || textos.es;
 
-			if (!pantalla) {
-				return;
-			}
+		elementos.tituloPrecios.textContent =
+			traduccion.titulo;
 
-			const subtitulo = pantalla.querySelector(
-				'.cbc-chatbot__subtitulo'
-			);
+		elementos.textoPrecios.textContent =
+			traduccion.introduccion;
 
-			const texto = pantalla.querySelector('p');
+		elementos.descripcionPrecios.textContent =
+			traduccion.descripcion;
 
-			if (!subtitulo || !texto) {
-				return;
-			}
+		elementos.notaPrecios.textContent =
+			traduccion.nota;
 
-			const traduccionesPantalla =
-				textos[nombrePantalla];
+		elementos.textoValoracionPrecios.textContent =
+			traduccion.valoracion;
 
-			const traduccion =
-				traduccionesPantalla[idioma] ||
-				traduccionesPantalla.es;
+		elementos.textoWhatsappPrecios.textContent =
+			traduccion.whatsapp;
 
-			subtitulo.textContent =
-				traduccion.titulo;
-
-			texto.textContent =
-				traduccion.mensaje;
-		});
+		elementos.textoLlamarPrecios.textContent =
+			traduccion.llamar;
 	}
 };

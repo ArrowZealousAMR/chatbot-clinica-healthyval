@@ -23,8 +23,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 		Encuéntranos en el barrio de L'Eixample, en València.
 	</p>
 
-	<div class="cbc-chatbot__informacion cbc-chatbot__informacion--ubicacion">
-
+	<div
+		class="cbc-chatbot__informacion cbc-chatbot__informacion--ubicacion"
+	>
 		<div
 			class="cbc-chatbot__icono-ubicacion"
 			aria-hidden="true"
@@ -56,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<address class="cbc-chatbot__direccion">
 			<span class="cbc-chatbot__direccion-calle">
-				Carrer del Dr. Sumsi, 46
+				Carrer del Doctor Sumsi, 46
 			</span>
 
 			<span class="cbc-chatbot__direccion-zona">
@@ -67,17 +68,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 				46005 València
 			</span>
 		</address>
-
 	</div>
 
-	<div class="cbc-chatbot__acciones-contacto">
+	<div class="cbc-chatbot__acciones-mapas">
 
 		<a
 			class="cbc-chatbot__accion-contacto"
 			href="https://maps.app.goo.gl/7RBfNJABeiQr7HMDA?g_st=ic"
 			target="_blank"
 			rel="noopener noreferrer"
-			data-contacto="mapa"
+			data-contacto="google-maps"
 			aria-label="Abrir la ubicación de HealthyVal en Google Maps"
 		>
 			<svg
@@ -106,10 +106,34 @@ if ( ! defined( 'ABSPATH' ) ) {
 				/>
 			</svg>
 
-			<span class="cbc-chatbot__texto-mapa">
-				Abrir en Google Maps
+			<span class="cbc-chatbot__texto-google-maps">
+				Google Maps
 			</span>
 		</a>
+
+		<a
+			class="cbc-chatbot__accion-contacto"
+			href="https://maps.apple/p/2Umh6spyq2uE3S"
+			target="_blank"
+			rel="noopener noreferrer"
+			data-contacto="apple-maps"
+			aria-label="Abrir la ubicación de HealthyVal en Apple Maps"
+		>
+			<span
+				class="cbc-chatbot__icono-apple-maps"
+				aria-hidden="true"
+			>
+				
+			</span>
+
+			<span class="cbc-chatbot__texto-apple-maps">
+				Maps
+			</span>
+		</a>
+
+	</div>
+
+	<div class="cbc-chatbot__acciones-contacto">
 
 		<a
 			class="cbc-chatbot__accion-contacto"

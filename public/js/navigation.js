@@ -108,7 +108,10 @@ window.CBCChatbot.navigation = {
 	},
 
 	/**
-	 * Comprueba que existen todos los elementos necesarios.
+	 * Comprueba únicamente los elementos imprescindibles.
+	 *
+	 * Los botones secundarios no bloquean la navegación
+	 * completa en caso de que falte alguno temporalmente.
 	 */
 	elementosValidos: function () {
 		const elementos = this.elementos;
@@ -123,20 +126,12 @@ window.CBCChatbot.navigation = {
 			elementos.errorNombre &&
 			elementos.pantallaMenu &&
 			elementos.pantallaHorarios &&
-			elementos.botonCitaHorarios &&
 			elementos.pantallaUbicacion &&
 			elementos.pantallaContacto &&
 			elementos.pantallaMedicinaEstetica &&
-			elementos.botonesEstetica.length &&
-			elementos.botonCitaEstetica &&
 			elementos.pantallaRecuperacion &&
-			elementos.botonesRecuperacion.length &&
-			elementos.botonCitaRecuperacion &&
 			elementos.pantallaSalud &&
-			elementos.botonesSalud.length &&
-			elementos.botonCitaSalud &&
-			elementos.pantallaPrecios &&
-			elementos.botonValoracionPrecios
+			elementos.pantallaPrecios
 		);
 	},
 
@@ -233,6 +228,59 @@ window.CBCChatbot.navigation = {
 		translations.traducirBotonesVolver();
 
 		const pantalla = core.mostrarPantalla('precios');
+
+		if (!pantalla) {
+			console.error(
+				'No se encontró la pantalla de precios.'
+			);
+
+			return;
+		}
+
+		this.enfocarPrimerElemento(pantalla);
+	},
+
+	/**
+	 * Traduce y muestra la pantalla de horarios.
+	 */
+	mostrarHorarios: function () {
+		const core = window.CBCChatbot.core;
+		const translations = window.CBCChatbot.translations;
+
+		translations.traducirHorarios();
+		translations.traducirBotonesVolver();
+
+		const pantalla = core.mostrarPantalla('horarios');
+
+		this.enfocarPrimerElemento(pantalla);
+	},
+
+	/**
+	 * Traduce y muestra la pantalla de ubicación.
+	 */
+	mostrarUbicacion: function () {
+		const core = window.CBCChatbot.core;
+		const translations = window.CBCChatbot.translations;
+
+		translations.traducirUbicacion();
+		translations.traducirBotonesVolver();
+
+		const pantalla = core.mostrarPantalla('ubicacion');
+
+		this.enfocarPrimerElemento(pantalla);
+	},
+
+	/**
+	 * Traduce y muestra la pantalla de contacto.
+	 */
+	mostrarContacto: function () {
+		const core = window.CBCChatbot.core;
+		const translations = window.CBCChatbot.translations;
+
+		translations.traducirContacto();
+		translations.traducirBotonesVolver();
+
+		const pantalla = core.mostrarPantalla('contacto');
 
 		this.enfocarPrimerElemento(pantalla);
 	},
@@ -371,6 +419,18 @@ window.CBCChatbot.navigation = {
 					case 'precios':
 						translations.traducirPrecios();
 						break;
+
+					case 'horarios':
+						translations.traducirHorarios();
+						break;
+
+					case 'ubicacion':
+						translations.traducirUbicacion();
+						break;
+
+					case 'contacto':
+						translations.traducirContacto();
+						break;
 				}
 
 				translations.traducirBotonesVolver();
@@ -385,51 +445,6 @@ window.CBCChatbot.navigation = {
 	},
 
 	/**
-	 * Traduce y abre la pantalla de horarios.
-	 */
-	mostrarHorarios: function () {
-		const core = window.CBCChatbot.core;
-		const translations = window.CBCChatbot.translations;
-
-		translations.traducirHorarios();
-		translations.traducirBotonesVolver();
-
-		const pantalla = core.mostrarPantalla('horarios');
-
-		this.enfocarPrimerElemento(pantalla);
-	},
-
-	/**
-	 * Traduce y abre la pantalla de ubicación.
-	 */
-	mostrarUbicacion: function () {
-		const core = window.CBCChatbot.core;
-		const translations = window.CBCChatbot.translations;
-
-		translations.traducirUbicacion();
-		translations.traducirBotonesVolver();
-
-		const pantalla = core.mostrarPantalla('ubicacion');
-
-		this.enfocarPrimerElemento(pantalla);
-	},
-
-	/**
-	 * Traduce y abre la pantalla de contacto.
-	 */
-	mostrarContacto: function () {
-		const core = window.CBCChatbot.core;
-		const translations = window.CBCChatbot.translations;
-
-		translations.traducirContacto();
-		translations.traducirBotonesVolver();
-
-		const pantalla = core.mostrarPantalla('contacto');
-
-		this.enfocarPrimerElemento(pantalla);
-	},
-
-	/**
 	 * Abre Doctoralia en una pestaña nueva.
 	 */
 	abrirDoctoralia: function () {
@@ -438,7 +453,8 @@ window.CBCChatbot.navigation = {
 
 		const nuevaVentana = window.open(
 			urlDoctoralia,
-			'_blank'
+			'_blank',
+			'noopener,noreferrer'
 		);
 
 		if (nuevaVentana) {
@@ -447,7 +463,7 @@ window.CBCChatbot.navigation = {
 	},
 
 	/**
-	 * Conecta todos los botones destacados de cita
+	 * Conecta los botones destacados de cita
 	 * y valoración con Doctoralia.
 	 */
 	registrarEventosCita: function () {
@@ -463,6 +479,10 @@ window.CBCChatbot.navigation = {
 		];
 
 		botonesCita.forEach(function (botonCita) {
+			if (!botonCita) {
+				return;
+			}
+
 			botonCita.addEventListener(
 				'click',
 				function () {
@@ -601,7 +621,7 @@ window.CBCChatbot.navigation = {
 		if (!this.elementosValidos()) {
 			console.error(
 				'No se pudo iniciar la navegación del chatbot. ' +
-					'Falta alguno de los elementos necesarios.'
+					'Falta alguno de los elementos imprescindibles.'
 			);
 
 			return false;
